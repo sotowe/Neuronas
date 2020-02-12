@@ -19,7 +19,7 @@ int main(void)
 {
     int N; //Number of neurons
     int i, j, k; // counters
-    double aux, h, /*time increment*/ t, /*time*/tmax, s;//mean synaptic activation
+    double aux, h, /*time increment*/ t, /*time*/tmax, tmin, s;//mean synaptic activation
     double Vp, /*peak*/ tau, average, /*average potential*/ rate; /*firing rate*/
     double Vthres, /*Vthreshold*/ Vr; /*Vrest*/
     int sum; // Number of neurons for the average of the potential.
@@ -33,7 +33,7 @@ int main(void)
     const double pi = atan(1)*4; //PI
     double rast[300]; //Raster vector of 300 neurons;
     bool spike[10001]; //spiking neurons
-    double refrac_period; //refractory period
+    double refrac_period[10001]; //Refractory period for every neuron.
 
     //Generador de aleatorios
     random_device rd;
@@ -42,10 +42,11 @@ int main(void)
     uniform_int_distribution <> disint(1,10000);
 
     N = 10000;
-    J = 15;
+    J = 15.0;
     tau = 1.0e-3;
     h = 1.0e-4;
     tmax = 40;
+    tmin = -10;
     Vp = 100.0;
     Vthres = Vp;
     Vr = -Vp;
@@ -53,22 +54,22 @@ int main(void)
     rate = 0;
     dt = 1e-2;
     Ndt = N*dt;
-    refrac_period = 2.0/Vp;
+    for (j=1;j<=N;j++)
+    {
+        refrac_period[j]= 2.0/Vp;
+    }
 
-    ofstream file4;
-    file4.open("archivostxt/eta.txt");
     // We calculate eta for each Neuron. Only needed once.
     for (j =1; j <= N; j++)
     {
-        aux = pi/2*(2*j-N-1)/(N+1);
+        aux = (pi/2.0)*((2.0*j-N-1)/(N+1.0));
         eta[j] = etamedia + tan(aux);
-        file4 << eta[j] <<"  "<<j<<endl;
     }
 
     // V are distributed randomly
     for (j=1;j<=N; j++)
     {
-        V[j]= dis(gen);
+        V[j]= Vr;
     }
 
     // No Neuron has been fired yet
@@ -90,7 +91,7 @@ int main(void)
     file5.open("archivostxt/raster.txt");
     file6.open("archivostxt/s.txt");
 
-    t = - 10;
+
     rate = 0;
 
     // We select Neurons for the raster
@@ -101,21 +102,20 @@ int main(void)
 
 
 
-    for (t=-10; t <= tmax; t += h)
+    for (t=tmin; t <= tmax; t += h)
 
     {
         // We calculate  the mean synaptic activation for every Neuron.
         s = 0;
         for (j=1; j<=N; j++)
         {
-            if(t - tpot[j] <= tau)
+            if((t - tpot[j] <= tau)&&(t - tpot[j] >= 0))
             {
                 s += 1;
             }
 
         }
-        //if (t<-9.9) cout << s << endl;
-        s = s/(N*1.0*tau);
+        s = 1.0*s/(N*1.0*tau);
 
         Js = J*s;
         file6<<Js<<endl;
@@ -134,7 +134,7 @@ int main(void)
         {
         spike[j] = false;
             //Only if the neuron is not in refractory period.
-            if (t - tpot[j] > refrac_period)
+            if (t - tpot[j] > refrac_period[j])
             {
                 I[j] = eta[j] + Js + current(t);
                 Euler(V[j],I[j],h);
@@ -142,15 +142,16 @@ int main(void)
                  // If the potential of the neuron reach Vthres, the neuron sends an impulse and goes to a refractory state.
                 if (V[j]>= Vthres)
                 {
-                    V[j] = Vr;
-                    tpot[j] = t;
+                    refrac_period[j]=2.0/V[j];
+                    tpot[j] = t + 1.0/V[j];
+                    V[j] = -V[j];
                     rate = rate += 1;
                     spike[j] = true;
                 }
 
             }
             // We calculate the average potential in the network. Only no refractory.
-            if (t - tpot[j] > refrac_period)
+            if (t - tpot[j] > refrac_period[j])
             {
                 average += V[j];
                 sum += 1;
@@ -170,7 +171,6 @@ int main(void)
         }
 
         // Finally we plot the raster
-//        file5<<t<<"  ";
         for ( i=1;i<300;i++)
         {
             k = rast[i];
@@ -185,7 +185,6 @@ int main(void)
     file1.close();
     file2.close();
     file3.close();
-    file4.close();
     file5.close();
     file6.close();
 
