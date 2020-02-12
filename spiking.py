@@ -13,30 +13,59 @@ import matplotlib.pyplot as plt
 
 ##------------------------------ 
 #%%
+
+# Estudiamos los puntos estables para un J determinado en función de etamedia
+J = 15
+
+# Primero r en función de eta. 
 r = np.linspace(0.05,1.4,100000)
-eta1 = -1/(np.pi**2*r**2*4)-15*r+np.pi**2*r**2
-eta2 = -1/(np.pi**2*r**2*4)-15*r+np.pi**2*r**2 - 3
+
+# Sin intensidad de corriente
+eta1 = -1/(np.pi**2*r**2*4)-J*r+np.pi**2*r**2
+
+# Con intensidad de corriente
+eta2 = -1/(np.pi**2*r**2*4)-J*r+np.pi**2*r**2 - 3
+
+# Ahora v en función de eta
 v = 1/(np.pi*2*r)
+
+# Ploteamos las funciones
 plt.plot(eta1,r)
 plt.plot(eta2,r)
+plt.legend(('I = 0','I = 3'))
+plt.xlabel("eta")
+plt.ylabel("r")
 plt.show()
 plt.plot(eta1,v)
 plt.plot(eta2,v)
+plt.legend(('I = 0','I = 3'))
+plt.xlabel("eta")
+plt.ylabel("v")
 plt.show()
 
-v,r = np.meshgrid(np.linspace(-2.2,1.5,20),np.linspace(0.05,2,20))
+# Realizamos el campo vectorial junto con las nullclinas
 etamedia = -5
 J = 15
 I = 0
+
+# Campo vectorial
+v,r = np.meshgrid(np.linspace(-2.2,1.5,20),np.linspace(0.05,2,20))
 rprima = 1/np.pi + 2*r*v
 vprima = v**2+etamedia+J*r-np.pi**2*r**2+I
 plt.quiver(r,v,rprima,vprima)
+
+# Nulclina de r
 v = np.linspace(-2.2,1.5,200)
-r = -1/(np.pi*v)
+r = -1/(np.pi*v*2)
 plt.plot(r,v)
+
+# Nulclina de v
 r = np.linspace(-0.05,2,200)
 v = -np.sqrt(-etamedia - J*r + np.pi**2*r**2)
 plt.plot(r,v)
 plt.xlim([0.05,2])
 plt.ylim([-2.2,1.5])
+plt.xlabel('r')
+plt.ylabel('v')
+plt.legend(('r-nul','v-nul',' '))
 plt.show()
