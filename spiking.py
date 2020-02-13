@@ -27,7 +27,7 @@ eta1 = -1/(np.pi**2*r**2*4)-J*r+np.pi**2*r**2
 eta2 = -1/(np.pi**2*r**2*4)-J*r+np.pi**2*r**2 - 3
 
 # Ahora v en función de eta
-v = 1/(np.pi*2*r)
+v = -1/(np.pi*2*r)
 
 # Ploteamos las funciones
 plt.plot(eta1,r)
