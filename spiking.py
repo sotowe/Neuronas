@@ -15,10 +15,10 @@ import matplotlib.pyplot as plt
 #%%
 
 # Estudiamos los puntos estables para un J determinado en función de etamedia
-J = 15
 
+J = 15
 # Primero r en función de eta. 
-r = np.linspace(0.05,1.4,100000)
+r = np.linspace(0.05,1.6,100000)
 
 # Sin intensidad de corriente
 eta1 = -1/(np.pi**2*r**2*4)-J*r+np.pi**2*r**2
@@ -31,21 +31,21 @@ v = -1/(np.pi*2*r)
 
 # Ploteamos las funciones
 plt.plot(eta1,r)
-plt.plot(eta2,r)
-plt.legend(('I = 0','I = 3'))
 plt.xlabel("eta")
 plt.ylabel("r")
+plt.title("J=15")
+plt.xlim([-11,0])
 plt.savefig('r_vs_eta_J15.png') 
 plt.show()
 plt.plot(eta1,v)
-plt.plot(eta2,v)
-plt.legend(('I = 0','I = 3'))
 plt.xlabel("eta")
 plt.ylabel("v")
+plt.title("J=15")
+plt.xlim([-11,0])
 plt.savefig('v_vs_eta_J15.png') 
 plt.show()
 
-
+#%%
 # Realizamos el campo vectorial junto con las nullclinas
 etamedia = -5
 J = 15
@@ -71,5 +71,5 @@ plt.ylim([-2.2,1.5])
 plt.xlabel('r')
 plt.ylabel('v')
 plt.legend(('r-nul','v-nul',' '))
-plt.savefig('campovectorial_J15_eta-5.png') 
+#plt.savefig('campovectorial_J15_eta-5.png') 
 plt.show()

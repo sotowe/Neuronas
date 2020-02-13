@@ -50,15 +50,15 @@ int main(void)
     ofstream file1;
     ofstream file2;
 
-    file1.open("archivostxt/meanaverageV_J15.txt");
-    file2.open("archivostxt/meanrate_J15.txt");
+    file1.open("archivostxt/meanaverageV_J20_ro0_Vo-3.txt");
+    file2.open("archivostxt/meanrate_J20_ro0_Vo-3.txt");
 
 
     for (j=1;j<=N;j++)
     {
         refrac_period[j]= 2.0/Vp;
     }
-    for (etamedia = -10; etamedia <=-2; etamedia++)
+    for (etamedia = -10; etamedia <=0; etamedia++)
     {
         counterr = 0;
         counterV = 0;
@@ -72,10 +72,10 @@ int main(void)
             eta[j] = etamedia + tan(aux);
         }
 
-        // V are all 0
+        // V are all -3
         for (j=1;j<=N; j++)
         {
-            V[j]= 0;
+            V[j]= -3;
         }
 
         // No Neuron has been fired yet
@@ -90,7 +90,7 @@ int main(void)
             // We calculate  the mean synaptic activation for every Neuron. The first 5 seconds we have r = 1;
             if (t<0)
             {
-                s = 1;
+                s = 0;
             }
             else
             {
