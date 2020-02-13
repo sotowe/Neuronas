@@ -35,13 +35,16 @@ plt.plot(eta2,r)
 plt.legend(('I = 0','I = 3'))
 plt.xlabel("eta")
 plt.ylabel("r")
+plt.savefig('r_vs_eta_J15.png') 
 plt.show()
 plt.plot(eta1,v)
 plt.plot(eta2,v)
 plt.legend(('I = 0','I = 3'))
 plt.xlabel("eta")
 plt.ylabel("v")
+plt.savefig('v_vs_eta_J15.png') 
 plt.show()
+
 
 # Realizamos el campo vectorial junto con las nullclinas
 etamedia = -5
@@ -68,4 +71,5 @@ plt.ylim([-2.2,1.5])
 plt.xlabel('r')
 plt.ylabel('v')
 plt.legend(('r-nul','v-nul',' '))
+plt.savefig('campovectorial_J15_eta-5.png') 
 plt.show()
