@@ -45,8 +45,8 @@ int main(void)
     J = 15.0;
     tau = 1.0e-3;
     h = 1.0e-4;
-    tmax = 40;
-    tmin = -10;
+    tmax = 10;
+    tmin = -5;
     Vp = 100.0;
     Vthres = Vp;
     Vr = -Vp;
@@ -66,10 +66,10 @@ int main(void)
         eta[j] = etamedia + tan(aux);
     }
 
-    // V are distributed randomly
+    // V are all 0
     for (j=1;j<=N; j++)
     {
-        V[j]= Vr;
+        V[j]= 0;
     }
 
     // No Neuron has been fired yet
@@ -103,19 +103,26 @@ int main(void)
 
 
     for (t=tmin; t <= tmax; t += h)
-
     {
-        // We calculate  the mean synaptic activation for every Neuron.
-        s = 0;
-        for (j=1; j<=N; j++)
+        // We calculate  the mean synaptic activation for every Neuron. The first 5 seconds we have r = 1;
+        if (t<0)
         {
-            if((t - tpot[j] <= tau)&&(t - tpot[j] >= 0))
-            {
-                s += 1;
-            }
-
+            s = 1;
         }
-        s = 1.0*s/(N*1.0*tau);
+        else
+        {
+            s = 0;
+            for (j=1; j<=N; j++)
+            {
+                if((t - tpot[j] <= tau)&&(t - tpot[j] >= 0))
+                {
+                    s += 1;
+                }
+
+            }
+            s = 1.0*s/(N*1.0*tau);
+        }
+
 
         Js = J*s;
         file6<<Js<<endl;
@@ -136,7 +143,7 @@ int main(void)
             //Only if the neuron is not in refractory period.
             if (t - tpot[j] > refrac_period[j])
             {
-                I[j] = eta[j] + Js + current(t);
+                I[j] = eta[j] + Js;
                 Euler(V[j],I[j],h);
 
                  // If the potential of the neuron reach Vthres, the neuron sends an impulse and goes to a refractory state.
