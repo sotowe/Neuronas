@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <random>
+#include<vector>
 
 using namespace std;
 
@@ -18,22 +19,25 @@ int main(void)
 {
     int N; //Number of neurons
     int i, j, k, counterr, counterV; // counters
-    double aux, h, /*time increment*/ t, /*time*/tmax, tmin, s;//mean synaptic activation
+    double aux, h, /*time increment*/ t, /*time*/tmax, tmin;
     double Vp, /*peak*/ tau, average, averageV, averager, /*average potential*/ rate; /*firing rate*/
     double Vthres, /*Vthreshold*/ Vr; /*Vrest*/
     int sum; // Number of neurons for the average of the potential.
-    double tpot[10001]; // time when the potential was sent
-    double eta[10001];
+    double tpot[10000]; // time when the potential was sent
+    double eta[10000];
+    double s;//mean synaptic activation
     double etamedia, dt, /*time we use for rate*/ Ndt; //N*dt
-    double I[10001]; //Input current
-    double V[10001]; //Neuron potential
+    double I[10000]; //Input current
+    double V[10000]; //Neuron potential
     double J; //Synaptic weight
     double Js; //J*s
     const double pi = atan(1)*4; //PI
     double rast[300]; //Raster vector of 300 neurons;
-    bool spike[10001]; //spiking neurons
-    double refrac_period[10001]; //Refractory period for every neuron.
+    bool spike[10000]; //spiking neurons
+    double refrac_period[10000]; //Refractory period for every neuron.
     double taverage;
+    int conectivity [10000]; //Number of conexions of every Neuron;
+    vector< vector<int> > conexion; //Vector de conexiones
 
     cout<<"eta"<<"  "<<"   V  "<<"  "<<"   r"<<endl;
     N = 10000;
@@ -52,14 +56,44 @@ int main(void)
     ofstream file1;
     ofstream file2;
 
+     //Generador de aleatorios
+    random_device rd;
+    mt19937 gen(45454536345331);
+    uniform_real_distribution<> dis(0, 100);
+
     file1.open("archivostxt/meanaverageV_J15_ro1_Vo0-2.txt");
     file2.open("archivostxt/meanrate_J15_ro1_Vo0-2.txt");
 
 
-    for (j=1;j<=N;j++)
+    //Creamos el número de filas del vector
+    for (i = 0; i<N; i++)
+    {
+        conexion.push_back(vector<int>());
+    }
+
+    //Creamos las distintas conectividades
+    for (i=0;i<N;i++)
+        {
+            for(j=i+1;j<N;j++)
+            {
+               if (dis(gen)<conectividad)
+               {
+                    conexion[i].push_back(j);
+                    conexion[j].push_back(i);
+                    cout<<i<<"  "<<j<<"    ";
+               }
+
+            }
+            conectivity[i]= conexion[i].size()
+        }
+
+    //Inicializamos el periodo refractario. Luego cambiaremos este valor
+    for (j=0;j<N;j++)
     {
         refrac_period[j]= 2.0/Vp;
     }
+
+
     for (etamedia = -6; etamedia <=-4; etamedia+=0.2)
     {
         counterr = 0;
@@ -68,50 +102,27 @@ int main(void)
         averager = 0;
 
         // We calculate eta for each Neuron. Only needed once.
-        for (j =1; j <= N; j++)
+        for (j =0; j < N; j++)
         {
-            aux = (pi/2.0)*((2.0*j-N-1)/(N+1.0));
+            aux = (pi/2.0)*((2.0*(j+1)-N-1)/(N+1.0));
             eta[j] = etamedia + tan(aux);
         }
 
         // V are all 0
-        for (j=1;j<=N; j++)
+        for (j=0;j<N; j++)
         {
             V[j]= 0;
         }
 
         // No Neuron has been fired yet
-        for (j=1;j<=N; j++)
+        for (j=0;j<N; j++)
         {
             tpot[j]=-10000;
         }
 
         rate = 0;
-        for (t=tmin; t <= tmax; t += h)
-        {
-            // We calculate  the mean synaptic activation for every Neuron. The first 5 seconds we have r = 1;
-            if (t<0)
-            {
-                s = 1;
-            }
-            else
-            {
-                s = 0;
-                for (j=1; j<=N; j++)
-                {
-                    if((t - tpot[j] <= tau)&&(t - tpot[j] >= 0))
-                    {
-                        s += 1;
-                    }
 
-                }
-                s = 1.0*s/(N*1.0*tau);
-            }
-
-
-            Js = J*s;
-
-            // Next we calculate the potential of every Neuron using Gauss method for differential equations. Also
+            // We calculate the potential of every Neuron using Gauss method for differential equations. Also
             // we calculate the average potential.
             average = 0;
             sum = 0;
@@ -119,9 +130,22 @@ int main(void)
             // We calculate the rate each 10^-2 s
             int ftime = t*10000;
 
-            for (j=1;j <=N; j++)
+            for (j=0;j <N; j++)
             {
-            spike[j] = false;
+                // We calculate s for Neurona j
+                for (i = 0; i < conectivity[j]; i++)
+                {
+                    neurona_conectada = conexion[j][i];
+                    if((t - tpot[neurona_conectada] <= tau)&&(t - tpot[neurona_conectada] >= 0))
+                    {
+                        s += 1;
+                    }
+                }
+
+                s = 1.0*s/(conectivity[j]*1.0*tau);
+                Js = J*s;
+
+                spike[j] = false;
                 //Only if the neuron is not in refractory period.
                 if (t - tpot[j] > refrac_period[j])
                 {

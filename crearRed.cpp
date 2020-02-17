@@ -13,10 +13,17 @@ using namespace std;
 
 int main(void)
 {
-    int N = 10;
+    int N;
     int i, j, tamano;
     int conectividad;
-    vector< vector<int> > conexion(N);
+    vector< vector<int> > conexion;
+    N = 10;
+    for (i = 0; i<N; i++)
+    {
+        conexion.push_back(vector<int>());
+    }
+
+
 
     conectividad = 50;
 
@@ -37,9 +44,10 @@ int main(void)
                }
 
             }
-            cout <<endl;
+            cout<<endl;
         }
         cout<<endl;
+
         for (i = 0; i<N; i++)
         {
            tamano = conexion[i].size();
