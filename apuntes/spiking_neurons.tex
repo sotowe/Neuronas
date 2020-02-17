@@ -50,11 +50,10 @@ El programa funciona igual que en el paper. (PONER ALGUNAS IMÁGENES). El próxi
 
 día 13/02/2020\\
 Sabemos que $r = nºspiking Neurons/(N*dt)$\\
-Para $J = 15$ tenemos el siguiente diagrama:\\
-\includegraphics[scale=0.7]{v_vs_eta_J15.png}\\
-\includegraphics[scale=0.7]{r_vs_eta_J15.png}\\
-\includegraphics[scale=0.4]{diagramaspaper.png}\\
-Para demostrar la biestabilidad primero vamos a la primera zona de estabilidad en $ \bar{\eta} = -5$:
+
+
+En el caso práctico dejamos el programa correr por 15 unidades temporales con las condiciones iniciales. Luego quitamos esas condiciones y dejamos correr el programa por 15 unidades temporales más, tomando la media de las últimas 5 unidades temporales.\\
+Para demostrar la biestabilidad primero vamos a la zona de estabilidad más activa para $ J = 15$:
 $r\simeq 1$ y $ v\simeq 0$
 para obtener  $r = 1$
 $$nºspikingNeurons/Ndt = 1$$
@@ -62,4 +61,26 @@ con $N = 10^4$ y $dt = 10^{-4}$
 entonces en cada intervalo temporal
 $$nºspikingNeurons = 1$$
 Esto lo mantenemos durante 5s y luego dejamos 10s al sistema para relajarse.
+Ahora nos vamos a la zona estable de bajo firing:
+$r\simeq 0$ y $ v\simeq -3$\\
+
+Hacemos lo mismo con $J = 20$\\
+Zona bajo firing:\\
+$r\simeq 0$ y $ v\simeq -3$\\
+Zona alto firing:\\
+$r\simeq 1$ y $ v\simeq 0$\\
+
+\includegraphics[scale=0.7]{v_vs_eta_J20.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J20.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J15.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J15.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J10.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J10.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J5.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J5.png}\\
+\includegraphics[scale=0.4]{diagramaspaper.png}\\
+
+\section{Redes tipo Erdos-Renyi}
+Generamos las conexiones de cada miembro de la red. Para ello hacemos un vector de vectores. 
+
 \end{document}
