@@ -23,6 +23,7 @@ int main(void)
     int sum; // Number of neurons for the average of the potential.
     int connectivity [10000]; //Number of conexions of every Neuron;
     int neuron_connected; //number of the connected neuron
+    double nconex;
     double J; //Synaptic weight
     double Js; //J*s
     double aux, h, /*time increment*/ t, /*time*/tmax, tmin, s;//mean synaptic activation
@@ -60,7 +61,7 @@ int main(void)
     rate = 0;
     dt = 1e-2;
     Ndt = N*dt;
-    prob_connection = 0.1;
+    prob_connection = 1;
 
     //Creamos el número de filas del vector
     for (i = 0; i<N; i++)
@@ -78,11 +79,13 @@ int main(void)
                {
                     connection[i].push_back(j);
                     connection[j].push_back(i);
+                    nconex += 1;
                }
 
             }
             connectivity[i]= connection[i].size();
         }
+        cout << 1.0*nconex/N;
 
     // We generate a provisional refractory period for every Neuron
     for (j = 0 ;j < N;j++)
