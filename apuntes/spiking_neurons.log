@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.18)  13 FEB 2020 17:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.18)  17 FEB 2020 10:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -811,45 +811,81 @@ Underfull \hbox (badness 10000) in paragraph at lines 48--50
 LaTeX Warning: Command \textordmasculine invalid in math mode on input line 52.
 
 
-<v_vs_eta_J15.png, id=1, 433.62pt x 289.08pt>
-File: v_vs_eta_J15.png Graphic file (type png)
-<use v_vs_eta_J15.png>
-Package pdftex.def Info: v_vs_eta_J15.png  used on input line 54.
-(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
-<r_vs_eta_J15.png, id=3, 433.62pt x 289.08pt>
-File: r_vs_eta_J15.png Graphic file (type png)
-<use r_vs_eta_J15.png>
-Package pdftex.def Info: r_vs_eta_J15.png  used on input line 55.
-(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
-<v_vs_eta_J20.png, id=4, 433.62pt x 289.08pt>
+<v_vs_eta_J20.png, id=1, 433.62pt x 289.08pt>
 File: v_vs_eta_J20.png Graphic file (type png)
 <use v_vs_eta_J20.png>
-Package pdftex.def Info: v_vs_eta_J20.png  used on input line 56.
+Package pdftex.def Info: v_vs_eta_J20.png  used on input line 53.
 (pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
-<r_vs_eta_J20.png, id=5, 433.62pt x 289.08pt>
+<r_vs_eta_J20.png, id=3, 433.62pt x 289.08pt>
 File: r_vs_eta_J20.png Graphic file (type png)
 <use r_vs_eta_J20.png>
-Package pdftex.def Info: r_vs_eta_J20.png  used on input line 57.
+Package pdftex.def Info: r_vs_eta_J20.png  used on input line 54.
 (pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
-<diagramaspaper.png, id=6, 779.91376pt x 373.395pt>
+<v_vs_eta_J15.png, id=4, 433.62pt x 289.08pt>
+File: v_vs_eta_J15.png Graphic file (type png)
+<use v_vs_eta_J15.png>
+Package pdftex.def Info: v_vs_eta_J15.png  used on input line 55.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<r_vs_eta_J15.png, id=5, 433.62pt x 289.08pt>
+File: r_vs_eta_J15.png Graphic file (type png)
+<use r_vs_eta_J15.png>
+Package pdftex.def Info: r_vs_eta_J15.png  used on input line 56.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<v_vs_eta_J10.png, id=6, 433.62pt x 289.08pt>
+File: v_vs_eta_J10.png Graphic file (type png)
+<use v_vs_eta_J10.png>
+Package pdftex.def Info: v_vs_eta_J10.png  used on input line 57.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<r_vs_eta_J10.png, id=7, 433.62pt x 289.08pt>
+File: r_vs_eta_J10.png Graphic file (type png)
+<use r_vs_eta_J10.png>
+Package pdftex.def Info: r_vs_eta_J10.png  used on input line 58.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<v_vs_eta_J5.png, id=8, 433.62pt x 289.08pt>
+File: v_vs_eta_J5.png Graphic file (type png)
+<use v_vs_eta_J5.png>
+Package pdftex.def Info: v_vs_eta_J5.png  used on input line 59.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<r_vs_eta_J5.png, id=9, 433.62pt x 289.08pt>
+File: r_vs_eta_J5.png Graphic file (type png)
+<use r_vs_eta_J5.png>
+Package pdftex.def Info: r_vs_eta_J5.png  used on input line 60.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<diagramaspaper.png, id=10, 779.91376pt x 373.395pt>
 File: diagramaspaper.png Graphic file (type png)
 <use diagramaspaper.png>
-Package pdftex.def Info: diagramaspaper.png  used on input line 58.
+Package pdftex.def Info: diagramaspaper.png  used on input line 61.
 (pdftex.def)             Requested size: 311.95998pt x 149.35535pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--62
+
+ []
+
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./v_vs_eta_J15.png> <.
-/r_vs_eta_J15.png>]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./v_vs_eta_J20.png> <.
+/r_vs_eta_J20.png>] [3 <./v_vs_eta_J15.png> <./r_vs_eta_J15.png>] [4 <./v_vs_et
+a_J10.png> <./r_vs_eta_J10.png>] [5 <./v_vs_eta_J5.png> <./r_vs_eta_J5.png> <./
+diagramaspaper.png>]
 
-LaTeX Warning: Command \textordmasculine invalid in math mode on input line 62.
-
-
-
-LaTeX Warning: Command \textordmasculine invalid in math mode on input line 65.
+LaTeX Warning: Command \textordmasculine invalid in math mode on input line 67.
 
 
-[3 <./v_vs_eta_J20.png> <./r_vs_eta_J20.png> <./diagramaspaper.png>] [4]
-(./spiking_neurons.aux
+
+LaTeX Warning: Command \textordmasculine invalid in math mode on input line 70.
+
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--80
+
+ []
+
+[6] (./spiking_neurons.aux
 LaTeX Info: Redefining \sptext on input line 10.
 LaTeX Info: Redefining \. on input line 10.
 LaTeX Info: Redefining \% on input line 10.
@@ -859,10 +895,10 @@ Package logreq Info: Writing requests to 'spiking_neurons.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 10204 strings out of 492982
- 168263 string characters out of 6134895
+ 10226 strings out of 492982
+ 168665 string characters out of 6134895
  597117 words of memory out of 5000000
- 13653 multiletter control sequences out of 15000+600000
+ 13671 multiletter control sequences out of 15000+600000
  8408 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  35i,8n,31p,826b,1637s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -876,10 +912,10 @@ type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy7.pfb>
-Output written on spiking_neurons.pdf (4 pages, 216526 bytes).
+Output written on spiking_neurons.pdf (6 pages, 261787 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
- 41 compressed objects within 1 object stream
+ 82 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

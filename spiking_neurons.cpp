@@ -33,14 +33,16 @@ int main(void)
     double rast[300]; //Raster vector of 300 neurons;
     bool spike[10001]; //spiking neurons
     double refrac_period[10001]; //Refractory period for every neuron.
+    double taverage;
 
     cout<<"eta"<<"  "<<"   V  "<<"  "<<"   r"<<endl;
     N = 10000;
     J = 15.0;
     tau = 1.0e-3;
     h = 1.0e-4;
-    tmax = 10;
-    tmin = -5;
+    tmax = 15;
+    tmin = -15;
+    taverage = 10;
     Vp = 100.0;
     Vthres = Vp;
     Vr = -Vp;
@@ -50,15 +52,15 @@ int main(void)
     ofstream file1;
     ofstream file2;
 
-    file1.open("archivostxt/meanaverageV_J20_ro0_Vo-3.txt");
-    file2.open("archivostxt/meanrate_J20_ro0_Vo-3.txt");
+    file1.open("archivostxt/meanaverageV_J15_ro1_Vo0-2.txt");
+    file2.open("archivostxt/meanrate_J15_ro1_Vo0-2.txt");
 
 
     for (j=1;j<=N;j++)
     {
         refrac_period[j]= 2.0/Vp;
     }
-    for (etamedia = -10; etamedia <=0; etamedia++)
+    for (etamedia = -6; etamedia <=-4; etamedia+=0.2)
     {
         counterr = 0;
         counterV = 0;
@@ -72,10 +74,10 @@ int main(void)
             eta[j] = etamedia + tan(aux);
         }
 
-        // V are all -3
+        // V are all 0
         for (j=1;j<=N; j++)
         {
-            V[j]= -3;
+            V[j]= 0;
         }
 
         // No Neuron has been fired yet
@@ -90,7 +92,7 @@ int main(void)
             // We calculate  the mean synaptic activation for every Neuron. The first 5 seconds we have r = 1;
             if (t<0)
             {
-                s = 0;
+                s = 1;
             }
             else
             {
@@ -147,14 +149,14 @@ int main(void)
             }
             average = 1.0*average/sum;
 
-            if (t > 5)
+            if (t > taverage)
             {
                 averageV += average;
                 counterV += 1;
             }
             if (ftime%100 == 0)
             {
-                if (t > 5)
+                if (t > taverage)
                 {
                     rate = 1.0*rate/(Ndt);
                     averager +=rate;
