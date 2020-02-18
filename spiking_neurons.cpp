@@ -151,10 +151,13 @@ int main(void)
 
         for (j=0;j < N; j++)
         {
-
             // We calculate s for Neuron j
             s = 0;
-            for (i = 0; i < connectivity[j]; i++)
+            spike[j] = false;
+            //Only if the neuron is not in refractory period.
+            if (t - tpot[j] > refrac_period[j])
+            {
+                for (i = 0; i < connectivity[j]; i++)
                 {
                     neuron_connected = connection[j][i];
                     if((t - tpot[neuron_connected] <= tau)&&(t - tpot[neuron_connected] >= 0))
@@ -162,13 +165,9 @@ int main(void)
                         s += 1;
                     }
                 }
-            s = 1.0*s/(connectivity[j]*1.0*tau);
-            Js = J*s;
+                s = 1.0*s/(connectivity[j]*1.0*tau);
+                Js = J*s;
 
-            spike[j] = false;
-            //Only if the neuron is not in refractory period.
-            if (t - tpot[j] > refrac_period[j])
-            {
                 I[j] = eta[j] + Js + current(t);
                 Euler(V[j],I[j],h);
 
