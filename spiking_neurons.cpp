@@ -46,7 +46,7 @@ int main(void)
 
     cout<<"eta"<<"  "<<"   V  "<<"  "<<"   r"<<endl;
     N = 10000;
-    J = 15.0;
+    J = 20.0;
     tau = 1.0e-3;
     h = 1.0e-4;
     tmax = 15;
@@ -64,8 +64,8 @@ int main(void)
     ofstream file2;
     ofstream file3;
 
-    file1.open("archivostxt/meanaverageV_J15_ro0_Vo-3_co10-2.txt");
-    file2.open("archivostxt/meanrate_J15_ro0_Vo-3_co10-2.txt");
+    file1.open("archivostxt/meanaverageV_J20_ro0_Vo-3_co10-2.txt");
+    file2.open("archivostxt/meanrate_J20_ro0_Vo-3_co10-2.txt");
     file3.open("archivostxt/ratecheck.txt");
 
     //Creamos el número de filas del vector
@@ -97,7 +97,7 @@ int main(void)
         refrac_period[j]= 2.0/Vp;
     }
 
-    for (etamedia = -5; etamedia <=-3.8; etamedia+=0.2)
+    for (etamedia = -7; etamedia <=-5.8; etamedia+=0.2)
     {
         counterr = 0;
         counterV = 0;
@@ -114,7 +114,7 @@ int main(void)
         // V are all 0
         for (j=0;j<N; j++)
         {
-            V[j]= -3;
+            V[j]= -3.0;
         }
 
         // No Neuron has been fired yet
