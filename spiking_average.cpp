@@ -9,40 +9,43 @@
 
 using namespace std;
 
-
 // FUNCTIONS
 double dVdt(double V, double I);
 void Euler(double &V, double I, double h);
+double errorEstandar(double media2, double media, double medidas);
 
 int main(void)
 {
     int N; //Number of neurons
     int i, j, k, counterr, counterV; // counters
+    int sum; // Number of neurons for the average of the potential.
     double aux, h, /*time increment*/ t, /*time*/tmax, tmin, s;//mean synaptic activation
     double Vp, /*peak*/ tau, average, averageV, averager, /*average potential*/ rate; /*firing rate*/
+    double averageV2, averager2; //sum(V_i^2) and sum(r_i^2)
     double Vthres, /*Vthreshold*/ Vr; /*Vrest*/
-    int sum; // Number of neurons for the average of the potential.
-    double tpot[10001]; // time when the potential was sent
-    double eta[10001];
-    double etamedia, dt, /*time we use for rate*/ Ndt; //N*dt
-    double I[10001]; //Input current
-    double V[10001]; //Neuron potential
+    double errorr, errorV;
+    double taverage;
     double J; //Synaptic weight
     double Js; //J*s
-    const double pi = atan(1)*4; //PI
+    double etamedia, dt, /*time we use for rate*/ Ndt; //N*dt
+    double tpot[10001]; // time when the potential was sent
+    double eta[10001];
     double rast[300]; //Raster vector of 300 neurons;
-    bool spike[10001]; //spiking neurons
+    double I[10001]; //Input current
+    double V[10001]; //Neuron potential
     double refrac_period[10001]; //Refractory period for every neuron.
-    double taverage;
+    const double pi = atan(1)*4; //PI
+    bool spike[10001]; //spiking neurons
 
-    cout<<"eta"<<"  "<<"   V  "<<"  "<<"   r"<<endl;
+
+    cout<<"eta"<<"  "<<"   V  "<<"  "<<"   r"<<"    "<<"errorV"<<"   "<<"errorr"<<endl;
     N = 10000;
-    J = 15.0;
+    J = 20.0;
     tau = 1.0e-3;
     h = 1.0e-4;
-    tmax = 15;
+    tmax = 45;
     tmin = -15;
-    taverage = 10;
+    taverage = 15;
     Vp = 100.0;
     Vthres = Vp;
     Vr = -Vp;
@@ -51,21 +54,24 @@ int main(void)
     Ndt = N*dt;
     ofstream file1;
     ofstream file2;
+    ofstream file3;
 
-    file1.open("archivostxt/meanaverageV_J15_ro1_Vo0-2.txt");
-    file2.open("archivostxt/meanrate_J15_ro1_Vo0-2.txt");
-
+    file1.open("archivostxt/meanaverageV_J20_ro0_Vo-3_long_2.txt");
+    file2.open("archivostxt/meanrate_J20_ro0_Vo-3_long_2.txt");
+    file3.open("archivostxt/ratecheck.txt");
 
     for (j=1;j<=N;j++)
     {
         refrac_period[j]= 2.0/Vp;
     }
-    for (etamedia = -6; etamedia <=-4; etamedia+=0.2)
+    for (etamedia = -4; etamedia <-2.8; etamedia+=0.2)
     {
         counterr = 0;
         counterV = 0;
         averageV = 0;
         averager = 0;
+        averageV2 = 0;
+        averager2 = 0;
 
         // We calculate eta for each Neuron. Only needed once.
         for (j =1; j <= N; j++)
@@ -77,7 +83,7 @@ int main(void)
         // V are all 0
         for (j=1;j<=N; j++)
         {
-            V[j]= 0;
+            V[j]= -3;
         }
 
         // No Neuron has been fired yet
@@ -89,27 +95,26 @@ int main(void)
         rate = 0;
         for (t=tmin; t <= tmax; t += h)
         {
-            // We calculate  the mean synaptic activation for every Neuron. The first 5 seconds we have r = 1;
-            if (t<0)
-            {
-                s = 1;
-            }
-            else
-            {
-                s = 0;
-                for (j=1; j<=N; j++)
+         // We calculate  the mean synaptic activation for every Neuron. The first 5 seconds we have r = 1;
+                if (t<0)
                 {
-                    if((t - tpot[j] <= tau)&&(t - tpot[j] >= 0))
-                    {
-                        s += 1;
-                    }
-
+                    s = 0;
                 }
-                s = 1.0*s/(N*1.0*tau);
-            }
+                else
+                {
+                    s = 0;
+                    for (j=1; j<=N; j++)
+                    {
+                        if((t - tpot[j] <= tau)&&(t - tpot[j] >= 0))
+                        {
+                            s += 1;
+                        }
 
+                    }
+                    s = 1.0*s/(N*1.0*tau);
+                }
+                Js = J*s;
 
-            Js = J*s;
 
             // Next we calculate the potential of every Neuron using Gauss method for differential equations. Also
             // we calculate the average potential.
@@ -125,10 +130,12 @@ int main(void)
                 //Only if the neuron is not in refractory period.
                 if (t - tpot[j] > refrac_period[j])
                 {
+
                     I[j] = eta[j] + Js;
                     Euler(V[j],I[j],h);
 
-                     // If the potential of the neuron reach Vthres, the neuron sends an impulse and goes to a refractory state.
+                     // If the potential of the neuron reach Vthres, the neuron sends an impulse and
+                     //goes to a refractory state.
                     if (V[j]>= Vthres)
                     {
                         refrac_period[j]=2.0/V[j];
@@ -152,27 +159,35 @@ int main(void)
             if (t > taverage)
             {
                 averageV += average;
+                averageV2 += average*average;
                 counterV += 1;
             }
             if (ftime%100 == 0)
             {
+                rate = 1.0*rate/(Ndt);
                 if (t > taverage)
                 {
-                    rate = 1.0*rate/(Ndt);
                     averager +=rate;
+                    averager2 += rate*rate;
                     counterr += 1;
                 }
+                file3 << t <<"  "<< rate << endl;
                 rate = 0;
+
             }
 
         }
-
-        file1<<etamedia<<"  "<<averageV/counterV<<endl;
-        file2<<etamedia<<"  "<<averager/counterr<<endl;
-        cout<<etamedia<<"  "<<averageV/counterV<<"  "<<averager/counterr<<endl;
+        averageV = averageV/counterV;
+        averager = averager/counterr;
+        errorV = errorEstandar(averageV2, averageV, counterV);
+        errorr = errorEstandar(averager2, averager, counterr);
+        file1<<etamedia<<"  "<<averageV<<"  "<<errorV<<endl;
+        file2<<etamedia<<"  "<<averager<<"  "<<errorr<<endl;
+        cout<<etamedia<<"  "<<averageV<<"  "<<averager<<"  "<<errorV<<"  "<<errorr<<endl;
     }
     file1.close();
     file2.close();
+    file3.close();
     return 0;
 
 }
@@ -200,3 +215,10 @@ void Euler(double &V, double I, double h)
         V = V + h*dVdt(V,I);
         return;
     }
+
+double errorEstandar (double media2, double media, double medidas)
+{
+    double error;
+    error = 1.96*sqrt(1.0*(media2 - medidas*media*media))/medidas;
+    return error;
+}

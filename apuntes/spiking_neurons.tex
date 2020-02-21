@@ -60,7 +60,11 @@ Sabemos que $r = nºspiking Neurons/(N*dt)$\\
 \includegraphics[scale=0.7]{r_vs_eta_J5.png}\\
 \includegraphics[scale=0.4]{diagramaspaper.png}\\
 
-En el caso práctico dejamos el programa correr por 15 unidades temporales con las condiciones iniciales. Luego quitamos esas condiciones y dejamos correr el programa por 15 unidades temporales más, tomando la media de las últimas 5 unidades temporales.\\
+En el caso práctico dejamos el programa correr por 15 unidades temporales con las condiciones iniciales. Luego quitamos esas condiciones y dejamos correr el programa por 45 unidades temporales más, tomando la media de las últimas 30 unidades temporales.\\
+Además tomamos el error de la media como $1.96\cdot SE$. Cuya fórmula es:
+$$SE = \frac{\sigma}{\sqrt{M}}$$
+con
+$$\sigma = \sqrt{\frac{1}{M}\left(\sum^M_ {i=1} (x^2_i)-M\mu^2\right)} $$
 Para demostrar la biestabilidad primero vamos a la zona de estabilidad más activa para $ J = 15$:
 $r\simeq 1$ y $ v\simeq 0$
 para obtener  $r = 1$

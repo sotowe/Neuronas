@@ -13,6 +13,8 @@ using namespace std;
 // FUNCTIONS
 double dVdt(double V, double I);
 void Euler(double &V, double I, double h);
+double errorEstandar(double media2, double media, double medidas);
+
 
 int main(void)
 {
@@ -29,6 +31,8 @@ int main(void)
     double Js; //J*s
     double taverage;
     double prob_connection; //probability for two neurons to be connected
+    double errorr, errorV;
+    double averageV2, averager2; //sum(V_i^2) and sum(r_i^2)
     double tpot[10000]; // time when the potential was sent
     double eta[10000];
     double refrac_period[10000]; //Refractory period for every neuron.
@@ -188,6 +192,7 @@ int main(void)
             if (t > taverage)
             {
                 averageV += average;
+		averageV2 += average*average;
                 counterV += 1;
             }
             if (ftime%100 == 0)
@@ -196,6 +201,7 @@ int main(void)
                 if (t > taverage)
                 {
                     averager +=rate;
+		    averager2 += rate*rate;
                     counterr += 1;
                 }
                 file3 << t <<"  "<< rate << endl;
@@ -204,9 +210,13 @@ int main(void)
 
         }
 
-        file1<<etamedia<<"  "<<averageV/counterV<<endl;
-        file2<<etamedia<<"  "<<averager/counterr<<endl;
-        cout<<etamedia<<"  "<<averageV/counterV<<"  "<<averager/counterr<<endl;
+        averageV = averageV/counterV;
+        averager = averager/counterr;
+        errorV = errorEstandar(averageV2, averageV, counterV);
+        errorr = errorEstandar(averager2, averager, counterr);
+        file1<<etamedia<<"  "<<averageV<<"  "<<errorV<<endl;
+        file2<<etamedia<<"  "<<averager<<"  "<<errorr<<endl;
+        cout<<etamedia<<"  "<<averageV<<"  "<<averager<<"  "<<errorV<<"  "<<errorr<<endl;
     }
     file1.close();
     file2.close();
@@ -238,3 +248,10 @@ void Euler(double &V, double I, double h)
         V = V + h*dVdt(V,I);
         return;
     }
+
+double errorEstandar (double media2, double media, double medidas)
+{
+    double error;
+    error = sqrt(1.0*(media2 - medidas*media*media))/medidas;
+    return error;
+}
