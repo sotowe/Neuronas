@@ -142,7 +142,7 @@ int main(void)
                  // If the potential of the neuron reach Vthres, the neuron sends an impulse and goes to a refractory state.
                 if (V[j]>= Vthres)
                 {
-                    refrac_period[j]=2.0/V[j];
+                    refrac_period[j]=1.0/V[j];
                     tpot[j] = t + 1.0/V[j];
                     V[j] = -V[j];
                     rate = rate += 1;
