@@ -56,7 +56,7 @@ int main(void)
     Ndt = N*dt;
     for (j=1;j<=N;j++)
     {
-        refrac_period[j]= 2.0/Vp;
+        refrac_period[j]= 1.0/Vp;
     }
 
     // We calculate eta for each Neuron. Only needed once.

@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Mar  2 16:59:14 2020
+
+@author: jose
+"""
+
+# Load libraries
+import numpy as np
+import matplotlib.pyplot as plt
+
+#%%
+raster = np.loadtxt('archivostxt/raster_modular.txt')
+pot = np.loadtxt('archivostxt/pot_modular.txt')
+rate = np.loadtxt('archivostxt/rate_modular.txt')
+current = np.loadtxt('archivostxt/current.txt')
+
+plt.plot(pot[:,0],pot[:,2], linewidth = 0.5)
+plt.plot(pot[:,0],pot[:,3], linewidth = 0.5)
+plt.plot(pot[:,0],pot[:,4], linewidth = 0.5)
+plt.plot(pot[:,0],pot[:,5], linewidth = 0.5)
+plt.ylim([-3,2])
+plt.legend(('módulo 1', 'módulo 2', 'módulo 3', 'módulo 4'))
+plt.xlabel('t')
+plt.ylabel('V')
+plt.savefig('potencial_seno_modulos.png')
+plt.show()
+
+plt.plot(rate[:,0],rate[:,2], linewidth = 0.5)
+plt.plot(rate[:,0],rate[:,3], linewidth = 0.5)
+plt.plot(rate[:,0],rate[:,4], linewidth = 0.5)
+plt.plot(rate[:,0],rate[:,5], linewidth = 0.5)
+plt.ylim([0,3])
+plt.legend(('módulo 1', 'módulo 2', 'módulo 3', 'módulo 4'))
+plt.xlabel('t')
+plt.ylabel('rate')
+plt.savefig('rate_seno_modulos.png')
+plt.show()
+
+
+plt.xlabel('t')
+plt.ylabel('I(t)')
+plt.plot(current[:,0],current[:,1], linewidth = 0.5)
+plt.savefig('current_seno.png')
+plt.show()

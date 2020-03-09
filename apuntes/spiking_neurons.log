@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.18)  25 FEB 2020 13:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.18)  5 MAR 2020 17:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -885,55 +885,258 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--84
 
  []
 
-<v_vs_eta_J20_con10.png, id=46, 433.62pt x 289.08pt>
-File: v_vs_eta_J20_con10.png Graphic file (type png)
-<use v_vs_eta_J20_con10.png>
-Package pdftex.def Info: v_vs_eta_J20_con10.png  used on input line 88.
+<v_vs_eta_J20_con10_2.png, id=46, 433.62pt x 289.08pt>
+File: v_vs_eta_J20_con10_2.png Graphic file (type png)
+<use v_vs_eta_J20_con10_2.png>
+Package pdftex.def Info: v_vs_eta_J20_con10_2.png  used on input line 88.
 (pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
-<r_vs_eta_J20_con10.png, id=47, 433.62pt x 289.08pt>
-File: r_vs_eta_J20_con10.png Graphic file (type png)
-<use r_vs_eta_J20_con10.png>
-Package pdftex.def Info: r_vs_eta_J20_con10.png  used on input line 89.
+<r_vs_eta_J20_con10_2.png, id=47, 433.62pt x 289.08pt>
+File: r_vs_eta_J20_con10_2.png Graphic file (type png)
+<use r_vs_eta_J20_con10_2.png>
+Package pdftex.def Info: r_vs_eta_J20_con10_2.png  used on input line 89.
 (pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
-<v_vs_eta_J15_con10.png, id=48, 433.62pt x 289.08pt>
-File: v_vs_eta_J15_con10.png Graphic file (type png)
-<use v_vs_eta_J15_con10.png>
-Package pdftex.def Info: v_vs_eta_J15_con10.png  used on input line 90.
+<v_vs_eta_J15_con10_2.png, id=48, 433.62pt x 289.08pt>
+File: v_vs_eta_J15_con10_2.png Graphic file (type png)
+<use v_vs_eta_J15_con10_2.png>
+Package pdftex.def Info: v_vs_eta_J15_con10_2.png  used on input line 90.
 (pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
-<r_vs_eta_J15_con10.png, id=49, 433.62pt x 289.08pt>
-File: r_vs_eta_J15_con10.png Graphic file (type png)
-<use r_vs_eta_J15_con10.png>
-Package pdftex.def Info: r_vs_eta_J15_con10.png  used on input line 91.
+<r_vs_eta_J15_con10_2.png, id=49, 433.62pt x 289.08pt>
+File: r_vs_eta_J15_con10_2.png Graphic file (type png)
+<use r_vs_eta_J15_con10_2.png>
+Package pdftex.def Info: r_vs_eta_J15_con10_2.png  used on input line 91.
 (pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
-<v_vs_eta_J10_con10.png, id=50, 433.62pt x 289.08pt>
-File: v_vs_eta_J10_con10.png Graphic file (type png)
-<use v_vs_eta_J10_con10.png>
-Package pdftex.def Info: v_vs_eta_J10_con10.png  used on input line 92.
+<v_vs_eta_J10_con10_2.png, id=50, 433.62pt x 289.08pt>
+File: v_vs_eta_J10_con10_2.png Graphic file (type png)
+<use v_vs_eta_J10_con10_2.png>
+Package pdftex.def Info: v_vs_eta_J10_con10_2.png  used on input line 92.
 (pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
-<r_vs_eta_J10_con10.png, id=51, 433.62pt x 289.08pt>
-File: r_vs_eta_J10_con10.png Graphic file (type png)
-<use r_vs_eta_J10_con10.png>
-Package pdftex.def Info: r_vs_eta_J10_con10.png  used on input line 93.
+<r_vs_eta_J10_con10_2.png, id=51, 433.62pt x 289.08pt>
+File: r_vs_eta_J10_con10_2.png Graphic file (type png)
+<use r_vs_eta_J10_con10_2.png>
+Package pdftex.def Info: r_vs_eta_J10_con10_2.png  used on input line 93.
 (pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
-<v_vs_eta_J5_con10.png, id=52, 433.62pt x 289.08pt>
-File: v_vs_eta_J5_con10.png Graphic file (type png)
-<use v_vs_eta_J5_con10.png>
-Package pdftex.def Info: v_vs_eta_J5_con10.png  used on input line 94.
+<v_vs_eta_J5_con10_2.png, id=52, 433.62pt x 289.08pt>
+File: v_vs_eta_J5_con10_2.png Graphic file (type png)
+<use v_vs_eta_J5_con10_2.png>
+Package pdftex.def Info: v_vs_eta_J5_con10_2.png  used on input line 94.
 (pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
-<r_vs_eta_J5_con10.png, id=53, 433.62pt x 289.08pt>
-File: r_vs_eta_J5_con10.png Graphic file (type png)
-<use r_vs_eta_J5_con10.png>
-Package pdftex.def Info: r_vs_eta_J5_con10.png  used on input line 95.
+<r_vs_eta_J5_con10_2.png, id=53, 433.62pt x 289.08pt>
+File: r_vs_eta_J5_con10_2.png Graphic file (type png)
+<use r_vs_eta_J5_con10_2.png>
+Package pdftex.def Info: r_vs_eta_J5_con10_2.png  used on input line 95.
 (pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 85--96
 
  []
 
-[6 <./v_vs_eta_J20_con10.png>] [7 <./r_vs_eta_J20_con10.png> <./v_vs_eta_J15_co
-n10.png>] [8 <./r_vs_eta_J15_con10.png> <./v_vs_eta_J10_con10.png>] [9 <./r_vs_
-eta_J10_con10.png> <./v_vs_eta_J5_con10.png>] [10 <./r_vs_eta_J5_con10.png>]
-(./spiking_neurons.aux
+[6 <./v_vs_eta_J20_con10_2.png>] [7 <./r_vs_eta_J20_con10_2.png> <./v_vs_eta_J1
+5_con10_2.png>] [8 <./r_vs_eta_J15_con10_2.png> <./v_vs_eta_J10_con10_2.png>]
+[9 <./r_vs_eta_J10_con10_2.png> <./v_vs_eta_J5_con10_2.png>]
+<fullconnected_rate_J15.pdf, id=75, 1301.86375pt x 572.1375pt>
+File: fullconnected_rate_J15.pdf Graphic file (type pdf)
+<use fullconnected_rate_J15.pdf>
+Package pdftex.def Info: fullconnected_rate_J15.pdf  used on input line 99.
+(pdftex.def)             Requested size: 260.36813pt x 114.42546pt.
+<erdos_rate_J15.pdf, id=76, 1301.86375pt x 652.4375pt>
+File: erdos_rate_J15.pdf Graphic file (type pdf)
+<use erdos_rate_J15.pdf>
+Package pdftex.def Info: erdos_rate_J15.pdf  used on input line 100.
+(pdftex.def)             Requested size: 260.36813pt x 130.48518pt.
+<modular_rate_J15.pdf, id=77, 642.4pt x 481.8pt>
+File: modular_rate_J15.pdf Graphic file (type pdf)
+<use modular_rate_J15.pdf>
+Package pdftex.def Info: modular_rate_J15.pdf  used on input line 101.
+(pdftex.def)             Requested size: 256.95544pt x 192.71658pt.
+<fullconnected_pot_J15.pdf, id=78, 1301.86375pt x 652.4375pt>
+File: fullconnected_pot_J15.pdf Graphic file (type pdf)
+<use fullconnected_pot_J15.pdf>
+Package pdftex.def Info: fullconnected_pot_J15.pdf  used on input line 102.
+(pdftex.def)             Requested size: 260.36813pt x 130.48518pt.
+<erdos_pot_J15.pdf, id=79, 1301.86375pt x 652.4375pt>
+File: erdos_pot_J15.pdf Graphic file (type pdf)
+<use erdos_pot_J15.pdf>
+Package pdftex.def Info: erdos_pot_J15.pdf  used on input line 103.
+(pdftex.def)             Requested size: 260.36813pt x 130.48518pt.
+<modular_pot_J15.pdf, id=80, 642.4pt x 481.8pt>
+File: modular_pot_J15.pdf Graphic file (type pdf)
+<use modular_pot_J15.pdf>
+Package pdftex.def Info: modular_pot_J15.pdf  used on input line 104.
+(pdftex.def)             Requested size: 256.95544pt x 192.71658pt.
+<fullconnected_raster_J15.pdf, id=81, 642.4pt x 481.8pt>
+File: fullconnected_raster_J15.pdf Graphic file (type pdf)
+<use fullconnected_raster_J15.pdf>
+Package pdftex.def Info: fullconnected_raster_J15.pdf  used on input line 105.
+(pdftex.def)             Requested size: 284.5291pt x 142.26208pt.
+<erdos_raster_J15.pdf, id=82, 1301.86375pt x 652.4375pt>
+File: erdos_raster_J15.pdf Graphic file (type pdf)
+<use erdos_raster_J15.pdf>
+Package pdftex.def Info: erdos_raster_J15.pdf  used on input line 106.
+(pdftex.def)             Requested size: 284.52376pt x 142.26239pt.
+<modular_raster_J15.pdf, id=83, 642.4pt x 481.8pt>
+File: modular_raster_J15.pdf Graphic file (type pdf)
+<use modular_raster_J15.pdf>
+Package pdftex.def Info: modular_raster_J15.pdf  used on input line 107.
+(pdftex.def)             Requested size: 284.5291pt x 142.26208pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--108
+
+ []
+
+[10 <./r_vs_eta_J5_con10_2.png> <./fullconnected_rate_J15.pdf> <./erdos_rate_J1
+5.pdf>] [11 <./modular_rate_J15.pdf> <./fullconnected_pot_J15.pdf> <./erdos_pot
+_J15.pdf>] [12 <./modular_pot_J15.pdf> <./fullconnected_raster_J15.pdf> <./erdo
+s_raster_J15.pdf>]
+<modular_raster_J15_semiorden.pdf, id=166, 1301.86375pt x 652.4375pt>
+File: modular_raster_J15_semiorden.pdf Graphic file (type pdf)
+<use modular_raster_J15_semiorden.pdf>
+Package pdftex.def Info: modular_raster_J15_semiorden.pdf  used on input line 1
+10.
+(pdftex.def)             Requested size: 284.52376pt x 142.26239pt.
+<modular_raster_J15_orden.pdf, id=167, 1301.86375pt x 652.4375pt>
+File: modular_raster_J15_orden.pdf Graphic file (type pdf)
+<use modular_raster_J15_orden.pdf>
+Package pdftex.def Info: modular_raster_J15_orden.pdf  used on input line 112.
+(pdftex.def)             Requested size: 284.52376pt x 142.26239pt.
+<modular_rate_J15_separated.pdf, id=168, 1301.86375pt x 652.4375pt>
+File: modular_rate_J15_separated.pdf Graphic file (type pdf)
+<use modular_rate_J15_separated.pdf>
+Package pdftex.def Info: modular_rate_J15_separated.pdf  used on input line 114
+.
+(pdftex.def)             Requested size: 284.52376pt x 142.26239pt.
+<modular_pot_J15_separated.pdf, id=169, 1301.86375pt x 652.4375pt>
+File: modular_pot_J15_separated.pdf Graphic file (type pdf)
+<use modular_pot_J15_separated.pdf>
+Package pdftex.def Info: modular_pot_J15_separated.pdf  used on input line 115.
+
+(pdftex.def)             Requested size: 284.52376pt x 142.26239pt.
+<modular_raster_J15_separated.pdf, id=170, 1301.86375pt x 652.4375pt>
+File: modular_raster_J15_separated.pdf Graphic file (type pdf)
+<use modular_raster_J15_separated.pdf>
+Package pdftex.def Info: modular_raster_J15_separated.pdf  used on input line 1
+16.
+(pdftex.def)             Requested size: 284.52376pt x 142.26239pt.
+<modular_raster_J15_separated_sin.pdf, id=171, 1301.86375pt x 652.4375pt>
+File: modular_raster_J15_separated_sin.pdf Graphic file (type pdf)
+<use modular_raster_J15_separated_sin.pdf>
+Package pdftex.def Info: modular_raster_J15_separated_sin.pdf  used on input li
+ne 118.
+(pdftex.def)             Requested size: 284.52376pt x 142.26239pt.
+<potencial_seno_modulos.png, id=172, 433.62pt x 289.08pt>
+File: potencial_seno_modulos.png Graphic file (type png)
+<use potencial_seno_modulos.png>
+Package pdftex.def Info: potencial_seno_modulos.png  used on input line 119.
+(pdftex.def)             Requested size: 284.54257pt x 142.26357pt.
+<rate_seno_modulos.png, id=173, 433.62pt x 289.08pt>
+File: rate_seno_modulos.png Graphic file (type png)
+<use rate_seno_modulos.png>
+Package pdftex.def Info: rate_seno_modulos.png  used on input line 120.
+(pdftex.def)             Requested size: 284.54257pt x 142.26357pt.
+<current_seno.png, id=174, 433.62pt x 289.08pt>
+File: current_seno.png Graphic file (type png)
+<use current_seno.png>
+Package pdftex.def Info: current_seno.png  used on input line 121.
+(pdftex.def)             Requested size: 284.54257pt x 142.26357pt.
+<v_vs_eta_J20_mod10_1.png, id=175, 433.62pt x 289.08pt>
+File: v_vs_eta_J20_mod10_1.png Graphic file (type png)
+<use v_vs_eta_J20_mod10_1.png>
+Package pdftex.def Info: v_vs_eta_J20_mod10_1.png  used on input line 123.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<r_vs_eta_J20_mod10_1.png, id=176, 433.62pt x 289.08pt>
+File: r_vs_eta_J20_mod10_1.png Graphic file (type png)
+<use r_vs_eta_J20_mod10_1.png>
+Package pdftex.def Info: r_vs_eta_J20_mod10_1.png  used on input line 124.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<v_vs_eta_J15_mod10_1.png, id=177, 433.62pt x 289.08pt>
+File: v_vs_eta_J15_mod10_1.png Graphic file (type png)
+<use v_vs_eta_J15_mod10_1.png>
+Package pdftex.def Info: v_vs_eta_J15_mod10_1.png  used on input line 125.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<r_vs_eta_J15_mod10_1.png, id=178, 433.62pt x 289.08pt>
+File: r_vs_eta_J15_mod10_1.png Graphic file (type png)
+<use r_vs_eta_J15_mod10_1.png>
+Package pdftex.def Info: r_vs_eta_J15_mod10_1.png  used on input line 126.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<v_vs_eta_J10_mod10_1.png, id=179, 433.62pt x 289.08pt>
+File: v_vs_eta_J10_mod10_1.png Graphic file (type png)
+<use v_vs_eta_J10_mod10_1.png>
+Package pdftex.def Info: v_vs_eta_J10_mod10_1.png  used on input line 127.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<r_vs_eta_J10_mod10_1.png, id=180, 433.62pt x 289.08pt>
+File: r_vs_eta_J10_mod10_1.png Graphic file (type png)
+<use r_vs_eta_J10_mod10_1.png>
+Package pdftex.def Info: r_vs_eta_J10_mod10_1.png  used on input line 128.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<v_vs_eta_J5_mod10_1.png, id=181, 433.62pt x 289.08pt>
+File: v_vs_eta_J5_mod10_1.png Graphic file (type png)
+<use v_vs_eta_J5_mod10_1.png>
+Package pdftex.def Info: v_vs_eta_J5_mod10_1.png  used on input line 129.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<r_vs_eta_J5_mod10_1.png, id=182, 433.62pt x 289.08pt>
+File: r_vs_eta_J5_mod10_1.png Graphic file (type png)
+<use r_vs_eta_J5_mod10_1.png>
+Package pdftex.def Info: r_vs_eta_J5_mod10_1.png  used on input line 130.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+File: diagramaspaper.png Graphic file (type png)
+<use diagramaspaper.png>
+Package pdftex.def Info: diagramaspaper.png  used on input line 131.
+(pdftex.def)             Requested size: 311.95998pt x 149.35535pt.
+<v_vs_eta_J20_mod10_01.png, id=183, 433.62pt x 289.08pt>
+File: v_vs_eta_J20_mod10_01.png Graphic file (type png)
+<use v_vs_eta_J20_mod10_01.png>
+Package pdftex.def Info: v_vs_eta_J20_mod10_01.png  used on input line 133.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<r_vs_eta_J20_mod10_01.png, id=184, 433.62pt x 289.08pt>
+File: r_vs_eta_J20_mod10_01.png Graphic file (type png)
+<use r_vs_eta_J20_mod10_01.png>
+Package pdftex.def Info: r_vs_eta_J20_mod10_01.png  used on input line 134.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<v_vs_eta_J15_mod10_01.png, id=185, 433.62pt x 289.08pt>
+File: v_vs_eta_J15_mod10_01.png Graphic file (type png)
+<use v_vs_eta_J15_mod10_01.png>
+Package pdftex.def Info: v_vs_eta_J15_mod10_01.png  used on input line 135.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<r_vs_eta_J15_mod10_01.png, id=186, 433.62pt x 289.08pt>
+File: r_vs_eta_J15_mod10_01.png Graphic file (type png)
+<use r_vs_eta_J15_mod10_01.png>
+Package pdftex.def Info: r_vs_eta_J15_mod10_01.png  used on input line 136.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<v_vs_eta_J10_mod10_01.png, id=187, 433.62pt x 289.08pt>
+File: v_vs_eta_J10_mod10_01.png Graphic file (type png)
+<use v_vs_eta_J10_mod10_01.png>
+Package pdftex.def Info: v_vs_eta_J10_mod10_01.png  used on input line 137.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<r_vs_eta_J10_mod10_01.png, id=188, 433.62pt x 289.08pt>
+File: r_vs_eta_J10_mod10_01.png Graphic file (type png)
+<use r_vs_eta_J10_mod10_01.png>
+Package pdftex.def Info: r_vs_eta_J10_mod10_01.png  used on input line 138.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<v_vs_eta_J5_mod10_01.png, id=189, 433.62pt x 289.08pt>
+File: v_vs_eta_J5_mod10_01.png Graphic file (type png)
+<use v_vs_eta_J5_mod10_01.png>
+Package pdftex.def Info: v_vs_eta_J5_mod10_01.png  used on input line 139.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+<r_vs_eta_J5_mod10_01.png, id=190, 433.62pt x 289.08pt>
+File: r_vs_eta_J5_mod10_01.png Graphic file (type png)
+<use r_vs_eta_J5_mod10_01.png>
+Package pdftex.def Info: r_vs_eta_J5_mod10_01.png  used on input line 140.
+(pdftex.def)             Requested size: 303.53192pt x 202.35461pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--141
+
+ []
+
+[13 <./modular_raster_J15.pdf> <./modular_raster_J15_semiorden.pdf> <./modular_
+raster_J15_orden.pdf>] [14 <./modular_rate_J15_separated.pdf> <./modular_pot_J1
+5_separated.pdf> <./modular_raster_J15_separated.pdf>] [15 <./modular_raster_J1
+5_separated_sin.pdf> <./potencial_seno_modulos.png> <./rate_seno_modulos.png> <
+./current_seno.png>] [16 <./v_vs_eta_J20_mod10_1.png> <./r_vs_eta_J20_mod10_1.p
+ng>] [17 <./v_vs_eta_J15_mod10_1.png> <./r_vs_eta_J15_mod10_1.png>] [18 <./v_vs
+_eta_J10_mod10_1.png> <./r_vs_eta_J10_mod10_1.png>] [19 <./v_vs_eta_J5_mod10_1.
+png> <./r_vs_eta_J5_mod10_1.png>] [20 <./v_vs_eta_J20_mod10_01.png> <./r_vs_eta
+_J20_mod10_01.png>] [21 <./v_vs_eta_J15_mod10_01.png> <./r_vs_eta_J15_mod10_01.
+png>] [22 <./v_vs_eta_J10_mod10_01.png> <./r_vs_eta_J10_mod10_01.png>] [23 <./v
+_vs_eta_J5_mod10_01.png> <./r_vs_eta_J5_mod10_01.png>] (./spiking_neurons.aux
 LaTeX Info: Redefining \sptext on input line 10.
 LaTeX Info: Redefining \. on input line 10.
 LaTeX Info: Redefining \% on input line 10.
@@ -943,11 +1146,11 @@ Package logreq Info: Writing requests to 'spiking_neurons.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 10269 strings out of 492982
- 169723 string characters out of 6134895
+ 10440 strings out of 492982
+ 174989 string characters out of 6134895
  597117 words of memory out of 5000000
- 13706 multiletter control sequences out of 15000+600000
- 8408 words of font info for 31 fonts, out of 8000000 for 9000
+ 13843 multiletter control sequences out of 15000+600000
+ 8715 words of font info for 32 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  35i,8n,31p,826b,1637s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
@@ -960,10 +1163,10 @@ type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy7.pfb>
-Output written on spiking_neurons.pdf (10 pages, 356502 bytes).
+Output written on spiking_neurons.pdf (23 pages, 10460569 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 342 PDF objects out of 1000 (max. 8388607)
+ 188 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 256 words of extra memory for PDF output out of 10000 (max. 10000000)
 

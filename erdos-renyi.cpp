@@ -90,7 +90,7 @@ int main(void)
     // We generate a provisional refractory period for every Neuron
     for (j = 0 ;j < N;j++)
     {
-        refrac_period[j]= 2.0/Vp;
+        refrac_period[j]= 1.0/Vp;
     }
 
     // We calculate eta for each Neuron. Only needed once.
@@ -174,7 +174,7 @@ int main(void)
                  // If the potential of the neuron reach Vthres, the neuron sends an impulse and goes to a refractory state.
                 if (V[j]>= Vthres)
                 {
-                    refrac_period[j]=2.0/V[j];
+                    refrac_period[j]=1.0/V[j];
                     tpot[j] = t + 1.0/V[j];
                     V[j] = -V[j];
                     rate = rate += 1;

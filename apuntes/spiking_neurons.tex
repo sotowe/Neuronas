@@ -60,7 +60,7 @@ Sabemos que $r = nºspiking Neurons/(N*dt)$\\
 \includegraphics[scale=0.7]{r_vs_eta_J5.png}\\
 \includegraphics[scale=0.4]{diagramaspaper.png}\\
 
-En el caso práctico dejamos el programa correr por 15 unidades temporales con las condiciones iniciales. Luego quitamos esas condiciones y dejamos correr el programa por 55 unidades temporales más, tomando la media de las últimas 30 unidades temporales.\\
+En el caso práctico dejamos el programa correr por 15 unidades temporales con las condiciones iniciales. Luego quitamos esas condiciones y dejamos correr el programa por 60 unidades temporales más, tomando la media de las últimas 30 unidades temporales.\\
 Además tomamos el error de la media como $1.96\cdot SE$. Cuya fórmula es:
 $$SE = \frac{\sigma}{\sqrt{M}}$$
 con
@@ -72,7 +72,7 @@ $$nºspikingNeurons/Ndt = 1$$
 con $N = 10^4$ y $dt = 10^{-4}$
 entonces en cada intervalo temporal
 $$nºspikingNeurons = 1$$
-Esto lo mantenemos durante 5s y luego dejamos 10s al sistema para relajarse.
+Esto lo mantenemos durante 15s y luego dejamos 30s al sistema para relajarse.
 Ahora nos vamos a la zona estable de bajo firing:
 $r\simeq 0$ y $ v\simeq -3$\\
 
@@ -85,14 +85,59 @@ $r\simeq 1$ y $ v\simeq 0$\\
 día 18/02/2020\\
 Ahora establecemos conexiones aleatorias según el modelo de Erdos-Renyi.\\
 Para una conectividad = 10 tenemos:\\
-\includegraphics[scale=0.7]{v_vs_eta_J20_con10.png}\\
-\includegraphics[scale=0.7]{r_vs_eta_J20_con10.png}\\
-\includegraphics[scale=0.7]{v_vs_eta_J15_con10.png}\\
-\includegraphics[scale=0.7]{r_vs_eta_J15_con10.png}\\
-\includegraphics[scale=0.7]{v_vs_eta_J10_con10.png}\\
-\includegraphics[scale=0.7]{r_vs_eta_J10_con10.png}\\
-\includegraphics[scale=0.7]{v_vs_eta_J5_con10.png}\\
-\includegraphics[scale=0.7]{r_vs_eta_J5_con10.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J20_con10_2.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J20_con10_2.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J15_con10_2.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J15_con10_2.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J10_con10_2.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J10_con10_2.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J5_con10_2.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J5_con10_2.png}\\
+
+\section{redes modulares}
+Tomamos una red de 10000 neuronas y la separamos en 4 módulos de 2500 neuronas cada uno. Tomamos una conectividad 10 para cada módulo. Para que esto pase, la probabilidad de conexión debe ser  $p=4$.\\
+\includegraphics[scale=0.2]{fullconnected_rate_J15.pdf}\\
+\includegraphics[scale=0.2]{erdos_rate_J15.pdf}\\
+\includegraphics[scale=0.4]{modular_rate_J15.pdf}\\
+\includegraphics[scale=0.2]{fullconnected_pot_J15.pdf}\\
+\includegraphics[scale=0.2]{erdos_pot_J15.pdf}\\
+\includegraphics[scale=0.4]{modular_pot_J15.pdf}\\
+\includegraphics[width=10cm,height=5cm]{fullconnected_raster_J15.pdf}\\
+\includegraphics[width=10cm,height=5cm]{erdos_raster_J15.pdf}\\
+\includegraphics[width=10cm,height=5cm]{modular_raster_J15.pdf}\\
+\subsection{raster semiordenado}
+Si ordenamos el raster de forma que las primeras 100 neuronas corresponden al primer módulo, las 200 siguientes al segundo, etc, obtenemos un raster como el siguiente:\\
+\includegraphics[width=10cm,height=5cm]{modular_raster_J15_semiorden.pdf}\\
+donde vemos que cada bloque de neuronas se activa en momentos diferentes. Esto es así porque el valor de $\eta$ para cada neurona está ordenado. Por tanto, en el bloque 1 el valor de eta de las neuronas es mucho menor que su valor en el bloque 4. Si ordenamos las neuronas dentro de cada módulo nos queda la siguiente gráfica:\\
+\includegraphics[width=10cm,height=5cm]{modular_raster_J15_orden.pdf}\\
+Ahora solo introducimos corriente a uno de los módulos. Medimos el potencial medio, la tasa de disparo y las neuronas que se excitan para cada uno de los módulos:\\
+\includegraphics[width=10cm,height=5cm]{modular_rate_J15_separated.pdf}\\
+\includegraphics[width=10cm,height=5cm]{modular_pot_J15_separated.pdf}\\
+\includegraphics[width=10cm,height=5cm]{modular_raster_J15_separated.pdf}\\
+Ahora aplicamos una corriente senoidal:\\
+\includegraphics[width=10cm,height=5cm]{modular_raster_J15_separated_sin.pdf}\\
+\includegraphics[width=10cm,height=5cm]{potencial_seno_modulos.png}\\
+\includegraphics[width=10cm,height=5cm]{rate_seno_modulos.png}\\
+\includegraphics[width=10cm,height=5cm]{current_seno.png}\\
+Para conectividad intramodular = 10 y conectividad intramodular = 1 tenemos la siguiente curva de estabilidad:\\
+\includegraphics[scale=0.7]{v_vs_eta_J20_mod10_1.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J20_mod10_1.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J15_mod10_1.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J15_mod10_1.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J10_mod10_1.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J10_mod10_1.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J5_mod10_1.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J5_mod10_1.png}\\
+\includegraphics[scale=0.4]{diagramaspaper.png}\\
+Para conectividad intramodular = 10 y conectividad intramodular = 1 tenemos la siguiente curva de estabilidad:\\
+\includegraphics[scale=0.7]{v_vs_eta_J20_mod10_01.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J20_mod10_01.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J15_mod10_01.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J15_mod10_01.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J10_mod10_01.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J10_mod10_01.png}\\
+\includegraphics[scale=0.7]{v_vs_eta_J5_mod10_01.png}\\
+\includegraphics[scale=0.7]{r_vs_eta_J5_mod10_01.png}\\
 
 
 \end{document}

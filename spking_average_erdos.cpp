@@ -39,9 +39,7 @@ int main(void)
     double refrac_period[10000]; //Refractory period for every neuron.
     double I[10000]; //Input current
     double V[10000]; //Neuron potential
-    double rast[300]; //Raster vector of 300 neurons;
     const double pi = atan(1)*4; //PI
-    bool spike[10000]; //spiking neurons
     vector< vector<int> > connection; //Vector of connections
 
     //Generador de aleatorios
@@ -51,12 +49,11 @@ int main(void)
 
     cout<<"eta"<<"  "<<"   V  "<<"  "<<"   r"<<"    "<<"errorV"<<"   "<<"errorr"<<endl;
     N = 10000;
-    J = 5.0;
     tau = 1.0e-3;
     h = 1.0e-4;
-    tmax = 60;
+    tmax = 35;
     tmin = -15;
-    taverage = 30;
+    taverage = 15;
     Vp = 100.0;
     Vthres = Vp;
     Vr = -Vp;
@@ -65,11 +62,33 @@ int main(void)
     Ndt = N*dt;
     prob_connection = 0.1;
 
+    //Creamos el número de filas del vector
+    for (i = 0; i<N; i++)
+    {
+        connection.push_back(vector<int>());
+    }
+
+
+    //Creamos las distintas conectividades
+    for (i=0;i<N;i++)
+    {
+        for(j=i+1;j<N;j++)
+        {
+           if (con(gen)<prob_connection)
+           {
+                connection[i].push_back(j);
+                connection[j].push_back(i);
+           }
+
+        }
+        connectivity[i]= connection[i].size();
+    }
+
     ofstream file1;
     ofstream file2;
     ofstream file3;
 
-    for (J = 5; J <= 21; J=J+5)
+    for (J = 5; J <= 10; J=J+5)
     {
         for (conditions = 1; conditions <=2; conditions ++)
         {
@@ -100,7 +119,6 @@ int main(void)
                     file2.open("archivostxt/meanrate_J10_ro1_Vo0_con10.txt");
                 }
             }
-
             else if (J == 15)
             {
                  if (conditions == 1)
@@ -127,317 +145,276 @@ int main(void)
                     file2.open("archivostxt/meanrate_J520_ro1_Vo0_con10.txt");
                 }
             }
-
-                //Creamos el número de filas del vector
-                for (i = 0; i<N; i++)
-                {
-                    connection.push_back(vector<int>());
-                }
-
-
-                //Creamos las distintas conectividades
-                for (i=0;i<N;i++)
-                    {
-                        for(j=i+1;j<N;j++)
-                        {
-                           if (con(gen)<prob_connection)
-                           {
-                                connection[i].push_back(j);
-                                connection[j].push_back(i);
-                           }
-
-                        }
-                        connectivity[i]= connection[i].size();
-                    }
-
-
+            for (etamedia = -11; etamedia <= 0; etamedia++)
+            {
                 // We generate a provisional refractory period for every Neuron
                 for (j=0;j<N;j++)
                 {
                     refrac_period[j]= 1.0/Vp;
                 }
-
-                for (etamedia = -11; etamedia <= 0; etamedia++)
+                if (J == 5)
                 {
-                    if (J == 5)
+                    if (conditions == 1)
                     {
-                        if (conditions == 1)
-                        {
-                            if (etamedia == -11) file3.open("archivostxt/rate_11_J05_r0_con10.txt");
-                           else if (etamedia == -10) file3.open("archivostxt/rate_10_J05_r0_con10.txt");
-                           else if (etamedia == -9) file3.open("archivostxt/rate_9_J05_r0_con10.txt");
-                           else if (etamedia == -8) file3.open("archivostxt/rate_8_J05_r0_con10.txt");
-                           else if (etamedia == -7) file3.open("archivostxt/rate_7_J05_r0_con10.txt");
-                           else if (etamedia == -6) file3.open("archivostxt/rate_6_J05_r0_con10.txt");
-                           else if (etamedia == -5) file3.open("archivostxt/rate_5_J05_r0_con10.txt");
-                           else if (etamedia == -4) file3.open("archivostxt/rate_4_J05_r0_con10.txt");
-                           else if (etamedia == -3) file3.open("archivostxt/rate_3_J05_r0_con10.txt");
-                           else if (etamedia == -2) file3.open("archivostxt/rate_2_J05_r0_con10.txt");
-                           else if (etamedia == -1) file3.open("archivostxt/rate_1_J05_r0_con10.txt");
-                           else if (etamedia == 0) file3.open("archivostxt/rate_0_J05_r0_con10.txt");
-                        }
-                        else if (conditions == 2)
-                        {
+                        if (etamedia == -11) file3.open("archivostxt/rate_11_J05_r0_con10.txt");
+                       else if (etamedia == -10) file3.open("archivostxt/rate_10_J05_r0_con10.txt");
+                       else if (etamedia == -9) file3.open("archivostxt/rate_9_J05_r0_con10.txt");
+                       else if (etamedia == -8) file3.open("archivostxt/rate_8_J05_r0_con10.txt");
+                       else if (etamedia == -7) file3.open("archivostxt/rate_7_J05_r0_con10.txt");
+                       else if (etamedia == -6) file3.open("archivostxt/rate_6_J05_r0_con10.txt");
+                       else if (etamedia == -5) file3.open("archivostxt/rate_5_J05_r0_con10.txt");
+                       else if (etamedia == -4) file3.open("archivostxt/rate_4_J05_r0_con10.txt");
+                       else if (etamedia == -3) file3.open("archivostxt/rate_3_J05_r0_con10.txt");
+                       else if (etamedia == -2) file3.open("archivostxt/rate_2_J05_r0_con10.txt");
+                       else if (etamedia == -1) file3.open("archivostxt/rate_1_J05_r0_con10.txt");
+                       else if (etamedia == 0) file3.open("archivostxt/rate_0_J05_r0_con10.txt");
+                    }
+                    else if (conditions == 2)
+                    {
 
-                            if (etamedia == -11) file3.open("archivostxt/rate_11_J05_r1_con10.txt");
-                           else if (etamedia == -10) file3.open("archivostxt/rate_10_J05_r1_con10.txt");
-                           else if (etamedia == -9) file3.open("archivostxt/rate_9_J05_r1_con10.txt");
-                           else if (etamedia == -8) file3.open("archivostxt/rate_8_J05_r1_con10.txt");
-                           else if (etamedia == -7) file3.open("archivostxt/rate_7_J05_r1_con10.txt");
-                           else if (etamedia == -6) file3.open("archivostxt/rate_6_J05_r1_con10.txt");
-                           else if (etamedia == -5) file3.open("archivostxt/rate_5_J05_r1_con10.txt");
-                           else if (etamedia == -4) file3.open("archivostxt/rate_4_J05_r1_con10.txt");
-                           else if (etamedia == -3) file3.open("archivostxt/rate_3_J05_r1_con10.txt");
-                           else if (etamedia == -2) file3.open("archivostxt/rate_2_J05_r1_con10.txt");
-                           else if (etamedia == -1) file3.open("archivostxt/rate_1_J05_r1_con10.txt");
-                           else if (etamedia == 0) file3.open("archivostxt/rate_0_J05_r1_con10.txt");
-                        }
+                        if (etamedia == -11) file3.open("archivostxt/rate_11_J05_r1_con10.txt");
+                       else if (etamedia == -10) file3.open("archivostxt/rate_10_J05_r1_con10.txt");
+                       else if (etamedia == -9) file3.open("archivostxt/rate_9_J05_r1_con10.txt");
+                       else if (etamedia == -8) file3.open("archivostxt/rate_8_J05_r1_con10.txt");
+                       else if (etamedia == -7) file3.open("archivostxt/rate_7_J05_r1_con10.txt");
+                       else if (etamedia == -6) file3.open("archivostxt/rate_6_J05_r1_con10.txt");
+                       else if (etamedia == -5) file3.open("archivostxt/rate_5_J05_r1_con10.txt");
+                       else if (etamedia == -4) file3.open("archivostxt/rate_4_J05_r1_con10.txt");
+                       else if (etamedia == -3) file3.open("archivostxt/rate_3_J05_r1_con10.txt");
+                       else if (etamedia == -2) file3.open("archivostxt/rate_2_J05_r1_con10.txt");
+                       else if (etamedia == -1) file3.open("archivostxt/rate_1_J05_r1_con10.txt");
+                       else if (etamedia == 0) file3.open("archivostxt/rate_0_J05_r1_con10.txt");
                     }
-                    else if (J == 10)
+                }
+                else if (J == 10)
+                {
+                    if (conditions == 1)
                     {
-                        if (conditions == 1)
-                        {
-                           if (etamedia == -11) file3.open("archivostxt/rate_11_J10_r0_con10.txt");
-                           else if (etamedia == -10) file3.open("archivostxt/rate_10_J10_r0_con10.txt");
-                           else if (etamedia == -9) file3.open("archivostxt/rate_9_J10_r0_con10.txt");
-                           else if (etamedia == -8) file3.open("archivostxt/rate_8_J10_r0_con10.txt");
-                           else if (etamedia == -7) file3.open("archivostxt/rate_7_J10_r0_con10.txt");
-                           else if (etamedia == -6) file3.open("archivostxt/rate_6_J10_r0_con10.txt");
-                           else if (etamedia == -5) file3.open("archivostxt/rate_5_J10_r0_con10.txt");
-                           else if (etamedia == -4) file3.open("archivostxt/rate_4_J10_r0_con10.txt");
-                           else if (etamedia == -3) file3.open("archivostxt/rate_3_J10_r0_con10.txt");
-                           else if (etamedia == -2) file3.open("archivostxt/rate_2_J10_r0_con10.txt");
-                           else if (etamedia == -1) file3.open("archivostxt/rate_1_J10_r0_con10.txt");
-                           else if (etamedia == 0) file3.open("archivostxt/rate_0_J10_r0_con10.txt");
-                        }
-                        else if (conditions == 2)
-                        {
-                           if (etamedia == -11) file3.open("archivostxt/rate_11_J10_r1_con10.txt");
-                           else if (etamedia == -10) file3.open("archivostxt/rate_10_J10_r1_con10.txt");
-                           else if (etamedia == -9) file3.open("archivostxt/rate_9_J10_r1_con10.txt");
-                           else if (etamedia == -8) file3.open("archivostxt/rate_8_J10_r1_con10.txt");
-                           else if (etamedia == -7) file3.open("archivostxt/rate_7_J10_r1_con10.txt");
-                           else if (etamedia == -6) file3.open("archivostxt/rate_6_J10_r1_con10.txt");
-                           else if (etamedia == -5) file3.open("archivostxt/rate_5_J10_r1_con10.txt");
-                           else if (etamedia == -4) file3.open("archivostxt/rate_4_J10_r1_con10.txt");
-                           else if (etamedia == -3) file3.open("archivostxt/rate_3_J10_r1_con10.txt");
-                           else if (etamedia == -2) file3.open("archivostxt/rate_2_J10_r1_con10.txt");
-                           else if (etamedia == -1) file3.open("archivostxt/rate_1_J10_r1_con10.txt");
-                           else if (etamedia ==  0) file3.open("archivostxt/rate_0_J10_r1_con10.txt");
-                        }
+                       if (etamedia == -11) file3.open("archivostxt/rate_11_J10_r0_con10.txt");
+                       else if (etamedia == -10) file3.open("archivostxt/rate_10_J10_r0_con10.txt");
+                       else if (etamedia == -9) file3.open("archivostxt/rate_9_J10_r0_con10.txt");
+                       else if (etamedia == -8) file3.open("archivostxt/rate_8_J10_r0_con10.txt");
+                       else if (etamedia == -7) file3.open("archivostxt/rate_7_J10_r0_con10.txt");
+                       else if (etamedia == -6) file3.open("archivostxt/rate_6_J10_r0_con10.txt");
+                       else if (etamedia == -5) file3.open("archivostxt/rate_5_J10_r0_con10.txt");
+                       else if (etamedia == -4) file3.open("archivostxt/rate_4_J10_r0_con10.txt");
+                       else if (etamedia == -3) file3.open("archivostxt/rate_3_J10_r0_con10.txt");
+                       else if (etamedia == -2) file3.open("archivostxt/rate_2_J10_r0_con10.txt");
+                       else if (etamedia == -1) file3.open("archivostxt/rate_1_J10_r0_con10.txt");
+                       else if (etamedia == 0) file3.open("archivostxt/rate_0_J10_r0_con10.txt");
                     }
-                    else if (J == 15)
+                    else if (conditions == 2)
                     {
-                        if (conditions == 1)
-                        {
-                            if (etamedia == -11) file3.open("archivostxt/rate_11_J15_r0_con10.txt");
-                           else if (etamedia == -10) file3.open("archivostxt/rate_10_J15_r0_con10.txt");
-                           else if (etamedia == -9) file3.open("archivostxt/rate_9_J15_r0_con10.txt");
-                           else if (etamedia == -8) file3.open("archivostxt/rate_8_J15_r0_con10.txt");
-                           else if (etamedia == -7) file3.open("archivostxt/rate_7_J15_r0_con10.txt");
-                           else if (etamedia == -6) file3.open("archivostxt/rate_6_J15_r0_con10.txt");
-                           else if (etamedia == -5) file3.open("archivostxt/rate_5_J15_r0_con10.txt");
-                           else if (etamedia == -4) file3.open("archivostxt/rate_4_J15_r0_con10.txt");
-                           else if (etamedia == -3) file3.open("archivostxt/rate_3_J15_r0_con10.txt");
-                           else if (etamedia == -2) file3.open("archivostxt/rate_2_J15_r0_con10.txt");
-                           else if (etamedia == -1) file3.open("archivostxt/rate_1_J15_r0_con10.txt");
-                           else if (etamedia == 0) file3.open("archivostxt/rate_0_J15_r0_con10.txt");
-                        }
-                        else if (conditions == 2)
-                        {
-                            if (etamedia == -11) file3.open("archivostxt/rate_11_J15_r1_con10.txt");
-                           else if (etamedia == -10) file3.open("archivostxt/rate_10_J15_r1_con10.txt");
-                           else if (etamedia == -9) file3.open("archivostxt/rate_9_J15_r1_con10.txt");
-                           else if (etamedia == -8) file3.open("archivostxt/rate_8_J15_r1_con10.txt");
-                           else if (etamedia == -7) file3.open("archivostxt/rate_7_J15_r1_con10.txt");
-                           else if (etamedia == -6) file3.open("archivostxt/rate_6_J15_r1_con10.txt");
-                           else if (etamedia == -5) file3.open("archivostxt/rate_5_J15_r1_con10.txt");
-                           else if (etamedia == -4) file3.open("archivostxt/rate_4_J15_r1_con10.txt");
-                           else if (etamedia == -3) file3.open("archivostxt/rate_3_J15_r1_con10.txt");
-                           else if (etamedia == -2) file3.open("archivostxt/rate_2_J15_r1_con10.txt");
-                           else if (etamedia == -1) file3.open("archivostxt/rate_1_J15_r1_con10.txt");
-                           else if (etamedia == 0) file3.open("archivostxt/rate_0_J15_r1_con10.txt");
-                        }
+                       if (etamedia == -11) file3.open("archivostxt/rate_11_J10_r1_con10.txt");
+                       else if (etamedia == -10) file3.open("archivostxt/rate_10_J10_r1_con10.txt");
+                       else if (etamedia == -9) file3.open("archivostxt/rate_9_J10_r1_con10.txt");
+                       else if (etamedia == -8) file3.open("archivostxt/rate_8_J10_r1_con10.txt");
+                       else if (etamedia == -7) file3.open("archivostxt/rate_7_J10_r1_con10.txt");
+                       else if (etamedia == -6) file3.open("archivostxt/rate_6_J10_r1_con10.txt");
+                       else if (etamedia == -5) file3.open("archivostxt/rate_5_J10_r1_con10.txt");
+                       else if (etamedia == -4) file3.open("archivostxt/rate_4_J10_r1_con10.txt");
+                       else if (etamedia == -3) file3.open("archivostxt/rate_3_J10_r1_con10.txt");
+                       else if (etamedia == -2) file3.open("archivostxt/rate_2_J10_r1_con10.txt");
+                       else if (etamedia == -1) file3.open("archivostxt/rate_1_J10_r1_con10.txt");
+                       else if (etamedia ==  0) file3.open("archivostxt/rate_0_J10_r1_con10.txt");
                     }
-                    else if (J == 20)
+                }
+                else if (J == 15)
+                {
+                    if (conditions == 1)
                     {
-                        if (conditions == 1)
-                        {
-                            if (etamedia == -11) file3.open("archivostxt/rate_11_J20_r0_con10.txt");
-                           else if (etamedia == -10) file3.open("archivostxt/rate_J20_10_r0_con10.txt");
-                           else if (etamedia == -9) file3.open("archivostxt/rate_9_J20_r0_con10.txt");
-                           else if (etamedia == -8) file3.open("archivostxt/rate_8_J20_r0_con10.txt");
-                           else if (etamedia == -7) file3.open("archivostxt/rate_7_J20_r0_con10.txt");
-                           else if (etamedia == -6) file3.open("archivostxt/rate_6_J20_r0_con10.txt");
-                           else if (etamedia == -5) file3.open("archivostxt/rate_5_J20_r0_con10.txt");
-                           else if (etamedia == -4) file3.open("archivostxt/rate_4_J20_r0_con10.txt");
-                           else if (etamedia == -3) file3.open("archivostxt/rate_3_J20_r0_con10.txt");
-                           else if (etamedia == -2) file3.open("archivostxt/rate_2_J20_r0_con10.txt");
-                           else if (etamedia == -1) file3.open("archivostxt/rate_1_J20_r0_con10.txt");
-                           else if (etamedia == 0) file3.open("archivostxt/rate_0_J20_r0_con10.txt");
-                        }
-                        else if (conditions == 2)
-                        {
-                            if (etamedia == -11) file3.open("archivostxt/rate_11_J20_r1_con10.txt");
-                           else if (etamedia == -10) file3.open("archivostxt/rate_10_J20_r1_con10.txt");
-                           else if (etamedia == -9) file3.open("archivostxt/rate_9_J20_r1_con10.txt");
-                           else if (etamedia == -8) file3.open("archivostxt/rate_8_J20_r1_con10.txt");
-                           else if (etamedia == -7) file3.open("archivostxt/rate_7_J20_r1_con10.txt");
-                           else if (etamedia == -6) file3.open("archivostxt/rate_6_J20_r1_con10.txt");
-                           else if (etamedia == -5) file3.open("archivostxt/rate_5_J20_r1_con10.txt");
-                           else if (etamedia == -4) file3.open("archivostxt/rate_4_J20_r1_con10.txt");
-                           else if (etamedia == -3) file3.open("archivostxt/rate_3_J20_r1_con10.txt");
-                           else if (etamedia == -2) file3.open("archivostxt/rate_2_J20_r1_con10.txt");
-                           else if (etamedia == -1) file3.open("archivostxt/rate_1_J20_r1_con10.txt");
-                           else if (etamedia == 0) file3.open("archivostxt/rate_0_J20_r1_con10.txt");
-                        }
+                        if (etamedia == -11) file3.open("archivostxt/rate_11_J15_r0_con10.txt");
+                       else if (etamedia == -10) file3.open("archivostxt/rate_10_J15_r0_con10.txt");
+                       else if (etamedia == -9) file3.open("archivostxt/rate_9_J15_r0_con10.txt");
+                       else if (etamedia == -8) file3.open("archivostxt/rate_8_J15_r0_con10.txt");
+                       else if (etamedia == -7) file3.open("archivostxt/rate_7_J15_r0_con10.txt");
+                       else if (etamedia == -6) file3.open("archivostxt/rate_6_J15_r0_con10.txt");
+                       else if (etamedia == -5) file3.open("archivostxt/rate_5_J15_r0_con10.txt");
+                       else if (etamedia == -4) file3.open("archivostxt/rate_4_J15_r0_con10.txt");
+                       else if (etamedia == -3) file3.open("archivostxt/rate_3_J15_r0_con10.txt");
+                       else if (etamedia == -2) file3.open("archivostxt/rate_2_J15_r0_con10.txt");
+                       else if (etamedia == -1) file3.open("archivostxt/rate_1_J15_r0_con10.txt");
+                       else if (etamedia == 0) file3.open("archivostxt/rate_0_J15_r0_con10.txt");
                     }
+                    else if (conditions == 2)
+                    {
+                        if (etamedia == -11) file3.open("archivostxt/rate_11_J15_r1_con10.txt");
+                       else if (etamedia == -10) file3.open("archivostxt/rate_10_J15_r1_con10.txt");
+                       else if (etamedia == -9) file3.open("archivostxt/rate_9_J15_r1_con10.txt");
+                       else if (etamedia == -8) file3.open("archivostxt/rate_8_J15_r1_con10.txt");
+                       else if (etamedia == -7) file3.open("archivostxt/rate_7_J15_r1_con10.txt");
+                       else if (etamedia == -6) file3.open("archivostxt/rate_6_J15_r1_con10.txt");
+                       else if (etamedia == -5) file3.open("archivostxt/rate_5_J15_r1_con10.txt");
+                       else if (etamedia == -4) file3.open("archivostxt/rate_4_J15_r1_con10.txt");
+                       else if (etamedia == -3) file3.open("archivostxt/rate_3_J15_r1_con10.txt");
+                       else if (etamedia == -2) file3.open("archivostxt/rate_2_J15_r1_con10.txt");
+                       else if (etamedia == -1) file3.open("archivostxt/rate_1_J15_r1_con10.txt");
+                       else if (etamedia == 0) file3.open("archivostxt/rate_0_J15_r1_con10.txt");
+                    }
+                }
+                else if (J == 20)
+                {
+                    if (conditions == 1)
+                    {
+                        if (etamedia == -11) file3.open("archivostxt/rate_11_J20_r0_con10.txt");
+                       else if (etamedia == -10) file3.open("archivostxt/rate_J20_10_r0_con10.txt");
+                       else if (etamedia == -9) file3.open("archivostxt/rate_9_J20_r0_con10.txt");
+                       else if (etamedia == -8) file3.open("archivostxt/rate_8_J20_r0_con10.txt");
+                       else if (etamedia == -7) file3.open("archivostxt/rate_7_J20_r0_con10.txt");
+                       else if (etamedia == -6) file3.open("archivostxt/rate_6_J20_r0_con10.txt");
+                       else if (etamedia == -5) file3.open("archivostxt/rate_5_J20_r0_con10.txt");
+                       else if (etamedia == -4) file3.open("archivostxt/rate_4_J20_r0_con10.txt");
+                       else if (etamedia == -3) file3.open("archivostxt/rate_3_J20_r0_con10.txt");
+                       else if (etamedia == -2) file3.open("archivostxt/rate_2_J20_r0_con10.txt");
+                       else if (etamedia == -1) file3.open("archivostxt/rate_1_J20_r0_con10.txt");
+                       else if (etamedia == 0) file3.open("archivostxt/rate_0_J20_r0_con10.txt");
+                    }
+                    else if (conditions == 2)
+                    {
+                        if (etamedia == -11) file3.open("archivostxt/rate_11_J20_r1_con10.txt");
+                       else if (etamedia == -10) file3.open("archivostxt/rate_10_J20_r1_con10.txt");
+                       else if (etamedia == -9) file3.open("archivostxt/rate_9_J20_r1_con10.txt");
+                       else if (etamedia == -8) file3.open("archivostxt/rate_8_J20_r1_con10.txt");
+                       else if (etamedia == -7) file3.open("archivostxt/rate_7_J20_r1_con10.txt");
+                       else if (etamedia == -6) file3.open("archivostxt/rate_6_J20_r1_con10.txt");
+                       else if (etamedia == -5) file3.open("archivostxt/rate_5_J20_r1_con10.txt");
+                       else if (etamedia == -4) file3.open("archivostxt/rate_4_J20_r1_con10.txt");
+                       else if (etamedia == -3) file3.open("archivostxt/rate_3_J20_r1_con10.txt");
+                       else if (etamedia == -2) file3.open("archivostxt/rate_2_J20_r1_con10.txt");
+                       else if (etamedia == -1) file3.open("archivostxt/rate_1_J20_r1_con10.txt");
+                       else if (etamedia == 0) file3.open("archivostxt/rate_0_J20_r1_con10.txt");
+                    }
+                }
+                counterr = 0;
+                counterV = 0;
+                averageV = 0;
+                averager = 0;
+                averageV2 = 0;
+                averager2 = 0;
 
+                // We calculate eta for each Neuron. Just needed once.
+                for (j =0; j < N; j++)
+                {
+                    aux = (pi/2.0)*((2.0*(j+1)-N-1)/(N+1.0));
+                    eta[j] = etamedia + tan(aux);
+                }
 
-                    counterr = 0;
-                    counterV = 0;
-                    averageV = 0;
-                    averager = 0;
-
-                    // We calculate eta for each Neuron. Just needed once.
-                    for (j =0; j < N; j++)
-                    {
-                        aux = (pi/2.0)*((2.0*(j+1)-N-1)/(N+1.0));
-                        eta[j] = etamedia + tan(aux);
-                    }
-
-                    if (conditions ==1)
-                    {
-                        // V are all 0
-                        for (j=0;j<N; j++)
-                        {
-                            V[j]= -3.0;
-                        }
-                    }
-                    else if (conditions ==2)
-                    {
-                        // V are all 0
-                        for (j=0;j<N; j++)
-                        {
-                            V[j]= 0.0;
-                        }
-                    }
-
-                    // No Neuron has been fired yet
+                if (conditions ==1)
+                {
+                    // V are all -3
                     for (j=0;j<N; j++)
                     {
-                        tpot[j]=-10000;
+                        V[j]= -3.0;
                     }
-
-                    rate = 0;
-                    for (t=tmin; t <= tmax; t += h)
+                }
+                else if (conditions ==2)
+                {
+                    // V are all 0
+                    for (j=0;j<N; j++)
                     {
-
-                        // Next we calculate the potential of every Neuron using Gauss method for differential equations. Also
-                        // we calculate the average potential.
-
-
-                        // We calculate the rate each 10^-2 s
-                        int ftime = t*10000;
-                        average = 0;
-                        sum = 0;
-                        for (j=0;j <N; j++)
+                        V[j]= 0.0;
+                    }
+                }
+                // No Neuron has been fired yet
+                for (j=0;j<N; j++)
+                {
+                    tpot[j]=-10000;
+                }
+                rate = 0;
+                for (t=tmin; t <= tmax; t += h)
+                {
+                    // We calculate the rate each 10^-2 s
+                    int ftime = t*10000;
+                    average = 0;
+                    sum = 0;
+                    for (j=0;j < N; j++)
+                    {
+                        s = 0;
+                        //Only if the neuron is not in refractory period.
+                        if (t - tpot[j] > refrac_period[j])
                         {
-                        spike[j] = false;
-
-                            s = 0;
-                            //Only if the neuron is not in refractory period.
-                            if (t - tpot[j] > refrac_period[j])
+                            if (t<0)
                             {
-                                if (t<0)
+                                if (conditions==1)
                                 {
-                                    if (conditions==1)
-                                    {
-                                        s = 0;
-                                    }
-                                    else if (conditions == 2)
-                                    {
-                                        s = 1;
-                                    }
-
+                                    s = 0;
                                 }
-                                else
+                                else if (conditions == 2)
                                 {
-                                    // We calculate s for Neuron j
-                                    for (i = 0; i < connectivity[j]; i++)
-                                    {
-                                        neuron_connected = connection[j][i];
-                                        if((t - tpot[neuron_connected] <= tau)&&(t - tpot[neuron_connected] >= 0))
-                                        {
-                                            s += 1;
-                                        }
-                                    }
-                                    s = 1.0*s/(connectivity[j]*1.0*tau);
+                                    s = 1;
                                 }
-                                Js = J*s;
-                                I[j] = eta[j] + Js;
-                                Euler(V[j],I[j],h);
-
-                                 // If the potential of the neuron reach Vthres, the neuron sends an impulse and goes to a refractory state.
-                                if (V[j]>= Vthres)
-                                {
-                                    refrac_period[j]=1.0/V[j];
-                                    tpot[j] = t + 1.0/V[j];
-                                    V[j] = -V[j];
-                                    rate = rate += 1;
-                                    spike[j] = true;
-                                }
-
                             }
-                            // We calculate the average potential in the network. Only no refractory.
-                            if (t - tpot[j] > refrac_period[j])
+                            else
                             {
-                                average += V[j];
-                                sum += 1;
-
+                                // Calculamos s para la neurona j
+                                for (i = 0; i < connectivity[j]; i++)
+                                {
+                                    neuron_connected = connection[j][i];
+                                    if((t - tpot[neuron_connected] <= tau)&&(t - tpot[neuron_connected] >= 0))
+                                    {
+                                        s += 1;
+                                    }
+                                }
+                                s = 1.0*s/(connectivity[j]*1.0*tau);
                             }
+                            Js = J*s;
+                            I[j] = eta[j] + Js;
+                            Euler(V[j],I[j],h);
+
+                             // If the potential of the neuron reach Vthres, the neuron sends an impulse and goes to a refractory state.
+                            if (V[j]>= Vthres)
+                            {
+                                refrac_period[j]=1.0/V[j];
+                                tpot[j] = t + 1.0/V[j];
+                                V[j] = -V[j];
+                                rate = rate += 1;
+                            }
+
                         }
-                        average = 1.0*average/sum;
+                        // We calculate the average potential in the network. Only no refractory state.
+                        if (t - tpot[j] > refrac_period[j])
+                        {
+                            average += V[j];
+                            sum += 1;
+                        }
+                    }
+                    average = 1.0*average/sum;
 
+                    if (t > taverage)
+                    {
+                        averageV += average;
+                        averageV2 += average*average;
+                        counterV += 1;
+                    }
+                    if (ftime%100 == 0)
+                    {
+                        rate = 1.0*rate/(Ndt);
                         if (t > taverage)
                         {
-                            averageV += average;
-                            averageV2 += average*average;
-                            counterV += 1;
+                            averager +=rate;
+                            averager2 += rate*rate;
+                            counterr += 1;
                         }
-                        if (ftime%100 == 0)
-                        {
-                            rate = 1.0*rate/(Ndt);
-                            if (t > taverage)
-                            {
-                                averager +=rate;
-                                averager2 += rate*rate;
-                                counterr += 1;
-                            }
-                            file3 << t <<"  "<< rate << endl;
-                            rate = 0;
-                        }
-
+                        file3 << t <<"  "<< rate << endl;
+                        rate = 0;
                     }
-
-                    averageV = averageV/counterV;
-                    averager = averager/counterr;
-                    errorV = errorEstandar(averageV2, averageV, counterV);
-                    errorr = errorEstandar(averager2, averager, counterr);
-                    file1<<etamedia<<"  "<<averageV<<"  "<<errorV<<endl;
-                    file2<<etamedia<<"  "<<averager<<"  "<<errorr<<endl;
-                    cout<<etamedia<<"  "<<averageV<<"  "<<averager<<"  "<<errorV<<"  "<<errorr<<endl;
                 }
-                file1.close();
-                file2.close();
+                averageV = averageV/counterV;
+                averager = averager/counterr;
+                errorV = errorEstandar(averageV2, averageV, counterV);
+                errorr = errorEstandar(averager2, averager, counterr);
+                file1<<etamedia<<"  "<<averageV<<"  "<<errorV<<endl;
+                file2<<etamedia<<"  "<<averager<<"  "<<errorr<<endl;
+                cout<<etamedia<<"  "<<averageV<<"  "<<averager<<"  "<<errorV<<"  "<<errorr<<endl;
                 file3.close();
             }
-    }
+            file1.close();
+            file2.close();
 
+        }
+    }
     return 0;
 }
-
-
 
 // FUNCTIONS
 
@@ -454,12 +431,11 @@ double dVdt(double V, double I)
     return dV;
 }
 
-
 void Euler(double &V, double I, double h)
-    {
-        V = V + h*dVdt(V,I);
-        return;
-    }
+{
+    V = V + h*dVdt(V,I);
+    return;
+}
 
 double errorEstandar (double media2, double media, double medidas)
 {
